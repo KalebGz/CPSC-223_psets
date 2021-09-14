@@ -1,0 +1,6 @@
+# Very long lines
+
+(tr  \012   < /c/cs223/Hwk3/Tests/words1000 ; /bin/echo ) | \
+timeout -k 1 2 valgrind -q \
+  ./strwrs -n  " a" " A"
+

@@ -1,0 +1,28 @@
+#!/bin/bash
+# Free all storage?: -POS[,LEN]: LEN specified
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f003
+
+
+# POS > 0, LEN > 0
+/c/cs223/bin/leak.pl +stdout \
+   ./Qsort -10,5 $FILE
+
+echo -----
+
+/c/cs223/bin/leak.pl +stdout \
+   ./Qsort -5,10 $FILE
+
+echo -----
+
+# POS = 0, LEN > 0
+/c/cs223/bin/leak.pl +stdout \
+   ./Qsort -0,15 $FILE
+
+echo -----
+
+# No -POS,LEN
+/c/cs223/bin/leak.pl +stdout \
+   ./Qsort       $FILE

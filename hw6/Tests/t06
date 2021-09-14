@@ -1,0 +1,17 @@
+#!/bin/bash
+# Traditional on example from specification
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle -t 3 3 epiproust
+pepper
+ports
+prep
+repertoire
+stripe
+superior
+support
+tripe
+trope
+END

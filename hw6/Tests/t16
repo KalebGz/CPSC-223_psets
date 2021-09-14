@@ -1,0 +1,13 @@
+#!/bin/perl
+
+# % . Boggle 1 3000 aabaabaab...aab
+# where dictionary includes a^k for 1 <= k <= 1000
+
+$n = 50;
+$board = "aab" x $n;
+$size = length ($board);
+open (DICT, "| valgrind -q --leak-check=yes ./Boggle 1 $size $board");
+for ($i = 1; $i <= $n; $i++) {
+   print DICT "a" x $i . "\n";
+}
+close (DICT);

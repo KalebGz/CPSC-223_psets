@@ -1,0 +1,38 @@
+#!/bin/bash
+# Set *S = NULL if remD()/headD() fails
+# Deque keeps pointer, not string itself
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << \END
+Ca
+Ha
+Ra
+
+Aa   Soon her eye fell on a little glass box that was lying under the
+Ra
+Ha
+Ra
+
+Pa table:  she opened it, and found in it a very small cake, on which
+Ra
+Ha
+Ra
+
+Aa the words `EAT ME' were beautifully marked in currants.  `Well, I'll
+Aa eat it,' said Alice, `and if it makes me grow larger, I can reach the
+Ra
+Ra
+Ha
+Ra
+
+Pa either way I'll get into the garden, and I don't care which happens!'
+Pa key; and if it makes me grow smaller, I can creep under the door; so
+Ra
+Ra
+Ha
+Ra
+
+Da
+END

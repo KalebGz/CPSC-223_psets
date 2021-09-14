@@ -1,0 +1,12 @@
+char:1
+hdr:1
+char:2
+se:2
+cardinal:5
+int:6
+grosbeak:6
+char:8
+ce:8
+Cardinal:11
+int:12
+Grosbeak:12

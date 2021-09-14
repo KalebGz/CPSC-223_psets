@@ -1,0 +1,19 @@
+#!/bin/bash
+# No Boggle words in dictionary
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 3 3 epiproust
+no
+boggle
+words
+in
+dictionary
+END
+
+echo -----
+
+# Repeat Test #01
+valgrind -q  <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

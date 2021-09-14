@@ -1,0 +1,13 @@
+#!/bin/bash
+# Mixed case in board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 3 3 ePiPrOuSt
+peeper
+pepper
+proust
+repertoire
+superior
+END

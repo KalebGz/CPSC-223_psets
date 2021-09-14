@@ -1,0 +1,4 @@
+#!/bin/bash
+# Simple backtracking requires nothing (#backtracks = 107)
+
+./Binpack 64 50 50 50 50 50 32 24 23 22 21 19 18 17 15 -ff -opt

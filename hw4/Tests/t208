@@ -1,0 +1,15 @@
+#!/bin/bash
+# Invalid D (= NULL) for all but createD()
+
+TESTS=/c/cs223/Hwk4/Tests
+
+
+XDEQUE_ANNOUNCE=  ./testDeque << END
+Ia
+Aa
+Pa
+Ra
+Ha
+Ca
+Da
+END

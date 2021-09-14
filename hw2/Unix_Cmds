@@ -1,0 +1,27 @@
+Useful Commands:
+
+Download Files
+    cp t01.c ~/cs223/ 
+    scp kzg2@node.zoo.cs.yale.edu:~/cs223/Makefile .
+
+Submit
+    /c/cs223/bin/submit 2 Makefile Binpack.c time.log
+    /c/cs223/bin/check  2
+
+    
+Test   
+    /c/cs223/Hwk2/test.Binpack
+
+Test Staff Input
+    /c/cs223/Hwk2/Binpack 
+
+
+
+
+
+
+Home Directory
+    /home/accts/kzg2/cs223/hw2
+
+Staff Directory
+    /c/cs223/Hwk2

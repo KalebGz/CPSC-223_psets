@@ -1,0 +1,19 @@
+-    You may NOT use structs, pointers, or pointer notation (other than the
+   declaration of the arguments to main()).
+
+
+
+- https://sce.cs.yale.edu/News/cs223/1100.html
+
+
+Notes
+
+- Valgrind: good debugger for when code breaks
+
+   You may NOT use structs, pointers, or pointer notation (other than the
+   declaration of the arguments to main()).
+
+- DOn't use CEIL
+
+- Arrays are passed by reference (pointers)
+

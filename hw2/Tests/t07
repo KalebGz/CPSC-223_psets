@@ -1,0 +1,6 @@
+#!/bin/bash
+# Presort item sizes (A required, AB or AC sufficient)
+
+./Binpack 730 101 102 103 104 105 106 107 401 402 403 404 405 406 407 201 202 203 204 205 206 207 -opt
+
+./Binpack 40  9  9 22 22 14 14 15 15 -opt

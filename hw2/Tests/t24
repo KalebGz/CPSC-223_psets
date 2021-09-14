@@ -1,0 +1,15 @@
+#!/bin/bash
+# No backtracking with presort (requires AB or AC)
+
+./Binpack 15030 1001 1002 1003 1004 1005 1006 1007 4001 4002 4003 4004 4005 4006 4007 2001 2002 2003 2004 2005 2006 2007  8001 8002 8003 8004 8005 8006 8007 -opt
+echo ---
+
+# Requires A and B/C
+# Fail: -optA -optBC
+# backtracks(-opt)    = 0
+# backtracks(-optBDE) = 0
+# backtracks(-optCDE) = 0
+# -ff = -bf = 11 > 7 = -ffd = -bfd = -opt = lower
+
+# lower < -opt < heuristic
+./Binpack 64 56 55 54 53 52 51 32 24 23 22 21 19 18 17 15 -opt

@@ -1,0 +1,6 @@
+# Medium problems (< 20 moves)
+
+valgrind -q  ./Nine20 20 12345678- 3562481-7 ; echo
+	     ./Nine20 20 3562481-7 12345678- ; echo
+valgrind -q  ./Nine20 20 13572468- 12345678- | wc -l
+	     ./Nine20 20 12345678- 23541768- | wc -l

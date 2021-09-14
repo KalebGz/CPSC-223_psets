@@ -1,0 +1,8 @@
+# Compute whether delimited sequences of bits are palindromes
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Sn  BN N  0N N  1N N  BE Y  B0E Y  B1E Y          \
+		 y0E E  x1E E  x0E N  y1E N                    \
+		 y0 0y  y1 1y  x0 0x  x1 1x  B0 By  B1 Bx  <<END
+BE B0E B1E B00E B01E B10E B11E B000E B001E B010E B011E B100E B101E B110E B111E
+END

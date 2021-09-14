@@ -1,0 +1,7 @@
+#!/bin/bash
+# Must use Heuristic D (D required and ACD sufficient)
+# N(bfd)/N(opt) = 11/9
+
+./Binpack 64 14 14 14 14 14 14 14 14 14 14 14 14 17 17 17 17 17 17 18 18 18 18 18 18 33 33 33 33 33 33 -bfd -opt
+
+./Binpack 40 13 14 13 12 19 19 15 15 -opt

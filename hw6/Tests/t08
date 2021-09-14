@@ -1,0 +1,13 @@
+#!/bin/bash
+# -c flag: Example from specification
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle -c 3 3 epiproust
+peeper
+pepper
+proust
+repertoire
+superior
+END

@@ -1,0 +1,10 @@
+#!/bin/bash
+# 256 different 1-line files (with limit on number of open files)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+ulimit -n 20                                    # Limit number of open files
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/fxyz/*

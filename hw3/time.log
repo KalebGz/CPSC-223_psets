@@ -1,0 +1,60 @@
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        20:00  ESTIMATE time
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    02/21  05:45pm  1:00  I spent most of the time trying to understand stdin and stdout functions and printing the status of char arrays.
+                                    I also copied the getline function written on the spec and am trying to figure out how it works rn.
+    02/21  09:45pm  1:00  I think i have a good idea of how to get input for standard in and the command line arguments, I have gotten an ouput from them
+                                    Most of this hour was spend just looking at the test cases and making sure that I have a good idea what is a viable input.
+    02/22  12:06pm  1:00  I was just messing around with pointers again and trying to create pointres to save the order and substitution rules
+    02/25  12:16pm  1:00  Outlined my plan for dealing with the different rules and how my string substitution is suppsoed to work. I am still a bit confused
+                                    as to how this would be possible without realloc and just strDup but I am now planning on concatting the differnt sections of
+                                    the replaced string and then reallocing if the size is different.
+    02/22  01:26pm  1:00  I was able to use strDup to create something that substitututes correctly for the q subtule but I run into an infinite loop for 
+                                      r and it doesn't seem to work for s. I also realize that I haven't been freeing properly so I am trying to retrace my code 
+                                      and figure out which library funcitons use malloc because I don't directly call it.
+    02/26  07:26pm  1:00  I was able to implement the rule order system into the for loop but I haven't really been able to test it yet because I am not freeing
+                                      my malloced(actually strnduped) strings and so it's hard to check what the actual problem is. I just realized when writting this
+                                      that I can use the examples on the spec sheet and prolly just go into the test folder and copy some of the test cases to test this.
+                                      The logic seemed pretty simple so it should work but i'm not sure. Other than that, I was just trying to understand my valgrind errors
+                                      for most of this time. I just don't know what to do with the double free detected in tcache 2 error right now as well
+    02/26  09:55pm  0:20  My multi rule system wasn't working but after a bit of debugging i realized that I was passing the original string to the new rules which was 
+                                      incorrect and so i reset the pointer of the old string to point to the new one. This is probably going to make freeing memoty a little
+                                      more difficult though so i need to worry about that again.
+    02/26  12:30pm  1:00  I have the base logic for everything with the expection of the back slash down but I figured out that i should probably approach the front characters
+                                      before the substitution function because as stan said, it would make it very difficult. Most of the time here was spent on trying to free
+                                      the heap and also mallocing for strcat
+    02/27  12:30am  1:00  I spent most of the time trying to refactor my code to a malloced pointer that the strings are being concatoneted into but strcat works in mysterious ways so
+                                        I'm probably going to have to just create my own function to do that.                               
+    02/27  02:30am  1:00  I freed a bunch of memory and the program seems to not be having any memory leak issues which is wonderful. There is some bug with the -n that i need to fix now
+                                        though.
+    02/27  02:30pm  1:00  I realized that the end substring being concatonating was causing problems and spent the entire time disecting the substitute function and realized that I 
+                                        wasn't mallocing the proper length and tried to copy the null terminator from the end substring which caused invalid read errors. I fixed that though
+                                        and am passing 11 out of the 14 tests now.
+    02/27  04:00pm  1:00  I started to deal with escape characters. I am running into this issue where some variables aren't being reset with different line inputs
+    02/27  05:40pm  0:50  I realized that i was implementing the backslash incorrectly becauese i thought that it should still trigger the only work on the first/last index. I removed the 
+                                        toggle and stopped the differnt states from changing Fi mutliple times by setting up  the backslash check before the +/- check adn it worked.
+    2/27  07:30pm  1:00   Test 12 wasn't working because of a time issue. I refactored my code to not have to duplicate one array but that didn't help much. I then realized that i was recalculating
+                                        the length of strings for every iteration of 3 for loops and the code started working after i saved those values into a variable instead of recalculating them
+    2/27  09:40pm  1:00   I was just writing out Edge cases for most of the time that usually dealth with the plus minus charactersitics and the /. I also realized that there was a bug in my implementation
+                                        of the backlash removal of the - (only replace end operaration) as i wasn't looking at the length of the modfied string
+    2/27  11:50pm  1:00   I've been trying to get the + - edge case to work with little success. strDup for some reason incorrectly copies the inputed line
+    2/28  12:50pm  1:00   I think i got the + - bounds to work but it just acts up for multiple rules implementing it. I am not trying to figure out how well it works just for + and - arguments
+       ----
+                   16:10  TOTAL time spent
+           
+
+    I discussed my solution with: 
+    Anthony Jiang: I briefly explained to him how you could do arithmethic on pointers
+
+    Difficulties:
+    
+    I thought that the escaped fences were really hard to deal with. This was especially because i didn't have a good understanding of how the fences were supposed to work when i implemented them
+    so i just used the first tests case and modified my program to work for that and then spent a decent chunk of time modifying my code for escaped +/- indicators only to find that I had implemented
+    the who escape system incorrectly. Another very troubling issue was replacing strings bound on both sides by + and -. Trying to check for this full string replacement in my substitute function kept
+    on giving me a seg fault so I had to go to where the swap configurations were being read and manually change the output string by having 2 different states. It has memory errors when more than one
+    set of swaps(Fi and Ti) is given but it works alroght otherwise.

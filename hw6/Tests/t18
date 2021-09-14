@@ -1,0 +1,10 @@
+#!/bin/bash
+# 1 x 1 board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 1 1 a
+a
+aa
+END

@@ -1,0 +1,13 @@
+#!/bin/bash
+# Wildcard in checkerboard
+
+TESTS=/c/cs223/Hwk6/Tests
+
+/c/cs223/bin/run \
+  ./Boggle 3 3 e_i_r_u_t <<END
+peeper
+pepper
+proust
+repertoire
+superior
+END

@@ -1,0 +1,11 @@
+#!/bin/bash
+# Heuristic D necessary and almost sufficient [C helps]
+
+  ./Binpack 101 82 82 82 82 82 82 41 41 41 41 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 -opt
+
+# Requires D
+# Fail: -optD
+# backtracks(-opt)    =      882
+# backtracks(-optABE) =     9792
+# backtracks(-optACE) = 78124678
+# -ff = -ffd = -bf = -bfd = 13 > 12 = -opt > lower

@@ -1,0 +1,14 @@
+#!/bin/bash
+# Heuristics A & B necessary and sufficient
+
+./Binpack 500 80 75 74 73 71 70 69 68 66 65 64 63 62 61 60 59 168 167 165 102 101 100 99 98 86 85 84 83 82 -opt
+echo ---
+
+# Requires A and B
+# Fail: -optA -optB
+# backtracks(-opt)    = 0
+# backtracks(-optCDE) = 0
+# -ff = -bf = 6 > 5 = -ffd = -bfd = -opt = lower
+
+# -opt < heuristic
+./Binpack 64 19 18 17 15 24 23 22 21 32 -opt

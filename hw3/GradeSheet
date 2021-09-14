@@ -1,0 +1,277 @@
+NAME: gezahegn.kaleb.kzg2
+Homework #3
+
+
+Final test script for strwrs (03/22/20)
+
+***** Checking for warning messages *****
+Making ./strwrs
+gcc -g3 -std=c99 -pedantic -Wall   -c -o strwrs.o strwrs.c
+gcc -g3 -std=c99 -pedantic -Wall strwrs.o -o strwrs
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type the command:
+     /c/cs223/Hwk3/Tests/tIJ
+The answer expected is in /c/cs223/Hwk3/Tests/tIJ.S.
+
+
+               Examples from the Specification
+  1 point   01. aabbab | strwrs -q  ab bca
+  1 point   02. aabbab | strwrs -n  ab bca
+  1 point   03. aabbab | strwrs -r  ab bca
+  1 point   04. aabbab | strwrs -s  ab bca
+  1 point   05. aaabbb | strwrs -Qn  aa a  abb aab
+  1 point   06. aaabbb | strwrs -Nn  aa a  abb aab
+  1 point   07. aaabbb | strwrs -Rn  aa a  abb aab
+  1 point   08. aaabbb | strwrs -Sn  aa a  abb aab
+  1 point   09. Default options
+  1 point   10. + fence and /+ nonfence
+  1 point   11. - fence and /- nonfence
+
+               Other Tests
+  1 point   12. Storage Leak? Explode and crash
+  1 point   13. Infinite expansion
+  1 point   14. Illegal arguments
+
+End of Public Script
+
+
+               Stress Tests
+1c1
+< Design is the art of making choices.
+---
+> strwrs [ -v ] [ -SRNQsrnq ] [ FROM TO ]*
+Error: STDOUT differs from expected
+  0 point   15. No arguments
+1c1
+< A foolish consistency is the hobgoblin of little minds.
+---
+> strwrs [ -v ] [ -SRNQsrnq ] [ FROM TO ]*
+Error: STDOUT differs from expected
+  0 point   16. Flags but no rules
+11c11
+< abcabbca aabcabb
+---
+> abcabbca abcacbcbca
+15c15
+< abcaabca abcaab
+---
+> abcaabca abcacbcbca
+28c28
+< abcabbca aabcabb
+Error: STDOUT differs from expected
+  0 point   17. Miscellaneous flag oddities
+  1 point   18. Combinations of Q with [q,n,r,s]
+  1 point   19. Combinations of N with [q,n,r,s]
+  1 point   20. Combinations of R with [q,n,r,s]
+  1 point   21. Combinations of S with [q,n,r,s]
+  1 point   22. Very long lines
+  1 point   23. Replace empty string or replacement empty
+  1 point   24. Large number of rules
+
+               Storage Leaks?
+2c2
+< in use at exit: 0 bytes in 0 blocks
+---
+> in use at exit: 120 bytes in 1 blocks
+4c4
+< in use at exit: 0 bytes in 0 blocks
+---
+> in use at exit: 120 bytes in 1 blocks
+6c6
+< in use at exit: 0 bytes in 0 blocks
+Error: STDOUT differs from expected
+  0 point   25. Combinations of Q with [q,n,r,s]
+  1 point   26. Combinations of N with [q,n,r,s]
+2c2
+< in use at exit: 0 bytes in 0 blocks
+---
+> in use at exit: 341 bytes in 8 blocks
+4c4
+< in use at exit: 0 bytes in 0 blocks
+---
+> in use at exit: 343 bytes in 8 blocks
+6c6
+< in use at exit: 0 bytes in 0 blocks
+Error: STDOUT differs from expected
+  0 point   27. Combinations of [R,S] with [q,n,r,s]
+
+               Detect Infinite Loops (and faux loops)
+2c2
+< yyy
+---
+> xxx
+Error: STDOUT differs from expected
+  0 point   28. x ==> x always fails under -Qr and -Nr (x present or not)
+2c2
+< yyy
+---
+> xxx
+Error: STDOUT differs from expected
+  0 point   29. x ==> x always fails under -Qs and -Ns (x present or not)
+  1 point   30. x ==> x always fails under -Rq (x present or not)
+  1 point   31. x ==> x always fails under -Rn (x present or not)
+  1 point   32. x ==> x succeeds under -Qn and -Qq if x present (NOT a loop)
+
+               Fences
+3c3
+< A wealth of information creates a poverty of attention.<<<
+---
+> A wealth of information creates a poverty of attention.
+Error: STDOUT differs from expected
+  0 point  33A. + and -
+  1 point  33B. +-
+5c5
+< e(slash)fe(slash)f
+---
+> efef
+8,13c8,13
+< a(slash)(plus)b+a(slash)(plus)b
+< a/+b/+a/+b
+< c(minus)d-c(minus)d
+< c/-d/-c/-d
+< e(slash)f/e(slash)f
+Error: STDOUT differs from expected
+  0 point   35. More escapes
+1,2c1,2
+< yyy
+< in use at exit: 0 bytes in 0 blocks
+---
+> yxx
+> in use at exit: 15 bytes in 3 blocks
+5c5
+< in use at exit: 0 bytes in 0 blocks
+---
+> in use at exit: 15 bytes in 3 blocks
+Error: STDOUT differs from expected
+  0 point   36. Infinite loop and storage leak
+
+               Applications
+  1 point   37. Reverse delimited string of 0s and 1s
+  1 point   38. Compute parity of nonempty sequence of binary digits (Nr)
+  1 point   39. Compute parity of nonempty sequence of binary digits (Rn)
+1c1
+< Y Y Y Y N N Y Y N Y N N Y N Y
+---
+> Y Y Y Y N N Y Y N Y BxxyE N Y N BxxxE
+Error: STDOUT differs from expected
+  0 point   40. Compute whether delimited sequence of bits is palindrome
+
+               Deductions for Violating Specification
+  0 point   50. Global variables?
+
+ 29 points Total for strwrs
+
+               Applications (no extra credit)
+  1 point   41. Convert delimited unary to binary
+
+               Replaced Tests (no extra credit)
+3c3
+< A wealth of information creates a poverty of attention.<<<
+---
+> A wealth of information creates a poverty of attention.
+Error: STDOUT differs from expected
+  0 point   33. + and - and +-
+1c1,2
+< Computer Science Department
+---
+> Computer Science
+> 
+Error: STDOUT differs from expected
+  0 point   34. Input line with no newline
+
+           Possible Deductions (assessed later as appropriate)
+                -5 Does not make
+                -1 Makefile missing
+                -1 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+                -1 Compilation errors using -Wall -std=c99 -pedantic
+
+
+***** Checking makefile *****
+
+***** Checking RCS files *****
+Working file: strwrs.c
+revision 1.15	date: 2020-02-28 01:59:14-05;  lines: 316 (+8 -17)
+revision 1.14	date: 2020-02-28 00:57:21-05;  lines: 325 (+72 -43)
+revision 1.13	date: 2020-02-27 22:51:29-05;  lines: 296 (+64 -85)
+revision 1.12	date: 2020-02-27 20:44:28-05;  lines: 317 (+22 -23)
+revision 1.11	date: 2020-02-27 19:10:58-05;  lines: 318 (+41 -25)
+revision 1.10	date: 2020-02-27 17:08:47-05;  lines: 302 (+77 -29)
+revision 1.9	date: 2020-02-27 14:37:42-05;  lines: 254 (+38 -20)
+revision 1.8	date: 2020-02-27 03:06:23-05;  lines: 236 (+38 -1)
+revision 1.7	date: 2020-02-27 02:31:52-05;  lines: 199 (+37 -17)
+revision 1.6	date: 2020-02-26 01:33:43-05;  lines: 179 (+37 -13)
+revision 1.4	date: 2020-02-25 20:39:21-05;  lines: 150 (+73 -34)
+revision 1.3	date: 2020-02-25 13:31:20-05;  lines: 111 (+67 -43)
+revision 1.2	date: 2020-02-22 12:39:13-05;  lines: 87 (+63 -8)
+revision 1.1	date: 2020-02-21 19:34:05-05;  lines: 30
+
+***** Checking log file *****
+Estimate: 20:00  ESTIMATE time
+Total: 16:10  TOTAL time spent
+
+==> time.log <==
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        20:00  ESTIMATE time
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    02/21  05:45pm  1:00  I spent most of the time trying to understand stdin and stdout functions and printing the status of char arrays.
+                                    I also copied the getline function written on the spec and am trying to figure out how it works rn.
+    02/21  09:45pm  1:00  I think i have a good idea of how to get input for standard in and the command line arguments, I have gotten an ouput from them
+                                    Most of this hour was spend just looking at the test cases and making sure that I have a good idea what is a viable input.
+    02/22  12:06pm  1:00  I was just messing around with pointers again and trying to create pointres to save the order and substitution rules
+    02/25  12:16pm  1:00  Outlined my plan for dealing with the different rules and how my string substitution is suppsoed to work. I am still a bit confused
+                                    as to how this would be possible without realloc and just strDup but I am now planning on concatting the differnt sections of
+                                    the replaced string and then reallocing if the size is different.
+    02/22  01:26pm  1:00  I was able to use strDup to create something that substitututes correctly for the q subtule but I run into an infinite loop for
+                                      r and it doesn't seem to work for s. I also realize that I haven't been freeing properly so I am trying to retrace my code
+                                      and figure out which library funcitons use malloc because I don't directly call it.
+    02/26  07:26pm  1:00  I was able to implement the rule order system into the for loop but I haven't really been able to test it yet because I am not freeing
+                                      my malloced(actually strnduped) strings and so it's hard to check what the actual problem is. I just realized when writting this
+                                      that I can use the examples on the spec sheet and prolly just go into the test folder and copy some of the test cases to test this.
+                                      The logic seemed pretty simple so it should work but i'm not sure. Other than that, I was just trying to understand my valgrind errors
+                                      for most of this time. I just don't know what to do with the double free detected in tcache 2 error right now as well
+    02/26  09:55pm  0:20  My multi rule system wasn't working but after a bit of debugging i realized that I was passing the original string to the new rules which was
+                                      incorrect and so i reset the pointer of the old string to point to the new one. This is probably going to make freeing memoty a little
+                                      more difficult though so i need to worry about that again.
+    02/26  12:30pm  1:00  I have the base logic for everything with the expection of the back slash down but I figured out that i should probably approach the front characters
+                                      before the substitution function because as stan said, it would make it very difficult. Most of the time here was spent on trying to free
+                                      the heap and also mallocing for strcat
+    02/27  12:30am  1:00  I spent most of the time trying to refactor my code to a malloced pointer that the strings are being concatoneted into but strcat works in mysterious ways so
+                                        I'm probably going to have to just create my own function to do that.
+    02/27  02:30am  1:00  I freed a bunch of memory and the program seems to not be having any memory leak issues which is wonderful. There is some bug with the -n that i need to fix now
+                                        though.
+    02/27  02:30pm  1:00  I realized that the end substring being concatonating was causing problems and spent the entire time disecting the substitute function and realized that I
+                                        wasn't mallocing the proper length and tried to copy the null terminator from the end substring which caused invalid read errors. I fixed that though
+                                        and am passing 11 out of the 14 tests now.
+    02/27  04:00pm  1:00  I started to deal with escape characters. I am running into this issue where some variables aren't being reset with different line inputs
+    02/27  05:40pm  0:50  I realized that i was implementing the backslash incorrectly becauese i thought that it should still trigger the only work on the first/last index. I removed the
+                                        toggle and stopped the differnt states from changing Fi mutliple times by setting up  the backslash check before the +/- check adn it worked.
+    2/27  07:30pm  1:00   Test 12 wasn't working because of a time issue. I refactored my code to not have to duplicate one array but that didn't help much. I then realized that i was recalculating
+                                        the length of strings for every iteration of 3 for loops and the code started working after i saved those values into a variable instead of recalculating them
+    2/27  09:40pm  1:00   I was just writing out Edge cases for most of the time that usually dealth with the plus minus charactersitics and the /. I also realized that there was a bug in my implementation
+                                        of the backlash removal of the - (only replace end operaration) as i wasn't looking at the length of the modfied string
+    2/27  11:50pm  1:00   I've been trying to get the + - edge case to work with little success. strDup for some reason incorrectly copies the inputed line
+    2/28  12:50pm  1:00   I think i got the + - bounds to work but it just acts up for multiple rules implementing it. I am not trying to figure out how well it works just for + and - arguments
+       ----
+                   16:10  TOTAL time spent
+
+    I discussed my solution with:
+    Anthony Jiang: I briefly explained to him how you could do arithmethic on pointers
+
+    Difficulties:
+
+    I thought that the escaped fences were really hard to deal with. This was especially because i didn't have a good understanding of how the fences were supposed to work when i implemented them
+    so i just used the first tests case and modified my program to work for that and then spent a decent chunk of time modifying my code for escaped +/- indicators only to find that I had implemented
+    the who escape system incorrectly. Another very troubling issue was replacing strings bound on both sides by + and -. Trying to check for this full string replacement in my substitute function kept
+    on giving me a seg fault so I had to go to where the swap configurations were being read and manually change the output string by having 2 different states. It has memory errors when more than one
+    set of swaps(Fi and Ti) is given but it works alroght otherwise.

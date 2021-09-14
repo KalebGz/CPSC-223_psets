@@ -1,0 +1,18 @@
+#!/bin/bash
+# Destroy nonempty deque but not strings
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << END
+Ca
+Aa beginning to feel a little worried.
+Aa   'Just about as much right,' said the Duchess, 'as pigs have to fly;
+Aa and the m--'
+Da
+END
+
+XDEQUE_ANNOUNCE=  /c/cs223/bin/leak.pl ./testDeque +stdout << END
+Ca
+Aa beginning to feel a little worried.
+Aa   'Just about as much right,' said the Duchess, 'as pigs have to fly;
+Aa and the m--'
+Da
+END

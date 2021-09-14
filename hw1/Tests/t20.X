@@ -1,0 +1,15 @@
+char:1
+hdr:1
+int:3
+foo:3
+int:3
+aardvark:3
+int:3
+barnacle:3
+int:4
+cardinal:4
+cardinal:5
+aardvark:5
+barnacle:6
+return:8
+cardinal:8

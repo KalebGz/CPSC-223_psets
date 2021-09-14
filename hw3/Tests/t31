@@ -1,0 +1,11 @@
+# x ==> x always fails under -Rn (x present or not)
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Rn  a x  x x  x y  <<END
+aaa
+END
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Rn  a x  x x  x y  <<END
+xxx
+END

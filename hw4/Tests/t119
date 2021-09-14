@@ -1,0 +1,26 @@
+#!/bin/bash
+# Stable?: POS = 0, 0 < LEN <= strlen(line)
+#          POS > strlen(line)
+#          Different results for different values of LEN for no LEN
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/t119x
+
+# t119x:
+#   same 3 same
+#   same 2 same
+#   same 1 same
+#   same 0 same
+     
+#####
+# POS = 0, 0 < LEN <= strlen(line)
+/usr/bin/valgrind -q \
+  ./Qsort -0,4 $FILE
+
+echo -----
+
+#####
+# POS > strlen(line)
+/usr/bin/valgrind -q \
+  ./Qsort -12  $FILE

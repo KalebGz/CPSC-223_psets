@@ -1,0 +1,5 @@
+#!/bin/bash
+# Best fit vs. best fit decreasing II
+
+/c/cs223/bin/run \
+  ./Binpack  97  5  5  5  6 16 25 31 50 51 -bfd -bf

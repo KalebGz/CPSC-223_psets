@@ -1,0 +1,4 @@
+# 4x4 problem
+
+valgrind -q  ./Nine20 4 4 15 -abcefgdijkhmnol abcdefghijklmno- ; echo
+valgrind -q  ./Nine20 4 4 15 abcdefghijklmno- -abcefgdijkhmnol

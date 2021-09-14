@@ -1,0 +1,14 @@
+#!/bin/bash
+# Create and destroy deque
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << END
+Ca
+Ia
+Da
+Ca
+Cb
+Ia
+Ib
+Da
+Db
+END

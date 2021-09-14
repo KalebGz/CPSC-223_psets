@@ -1,0 +1,15 @@
+#!/bin/bash
+# Wildcards everywhere (traditional)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+/c/cs223/bin/run \
+  ./Boggle -t 3 3 _________ <<END
+a
+ab
+abc
+abcd
+abcde
+abcdef
+abcdefg
+END

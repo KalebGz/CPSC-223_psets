@@ -1,0 +1,13 @@
+#!/bin/bash
+# Heuristic E necessary and sufficient [C helps!]
+./Binpack 79 40 40 40 40 40 40 40 40 40 40 40 39 38 37 36 35 34 33 32 31 30 29 28 -opt
+echo ---
+
+# Requires E
+# backtracks(-opt) = 0
+# backtracks(-optABD) = 0
+# backtracks(-optABCD) = 3130463
+# -ff = -ffd = -bf = -bfd = 12 = -opt > lower
+
+# -opt < heuristic
+./Binpack 64 19 18 17 15 24 23 22 21 32 -opt

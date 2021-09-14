@@ -1,0 +1,6 @@
+# +-
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -q +- .................... <<END
+
+END

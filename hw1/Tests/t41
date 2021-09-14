@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TESTS=/c/cs223/Hwk1/Tests
+
+cat $TESTS/t0[4-9].c $TESTS/t1[0-4].c | \
+
+LD_PRELOAD=$TESTS/libunget.so ./Cxref > /dev/null

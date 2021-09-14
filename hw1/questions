@@ -1,0 +1,13 @@
+FOR TA's
+
+-  https://sce.cs.yale.edu/News/cs223/1052.html
+    > "example\\
+    > \
+    > \
+    > "end"
+
+    After the three line splices are removed, the input is
+  "example\"end"
+
+- Error im getting
+  

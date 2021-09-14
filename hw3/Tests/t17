@@ -1,0 +1,60 @@
+# Miscellaneous flag oddities
+
+# Faux flag (#arguments even)
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Qq nonFlag  <<END
+-Qq should be replaced by nonFlag when this line is output.
+END
+
+echo =====
+
+# Faux flag (#arguments even)
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Qq -Nn -Rr <<END
+-Nn should appear in place of -Nn when this line is output.
+END
+
+
+
+echo =====
+
+# Last flag takes precedence
+echo aabbab aaabbb | timeout -k 1 2 valgrind -q ./strwrs -QNRSqnrs   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -QNRSnrsq   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -QNRSrsqn   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -QNRSsqnr   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -NRSQqnrs   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -NRSQnrsq   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -NRSQrsqn   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -NRSQsqnr   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -RSQNqnrs   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -RSQNnrsq   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -RSQNrsqn   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -RSQNsqnr   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -SQNRqnrs   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -SQNRnrsq   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -SQNRrsqn   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -SQNRsqnr   ab bca  aa a  abb aab
+echo -----
+echo aabbab aaabbb |             ./strwrs -qnrsQNRS   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -nrsqQNRS   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -rsqnQNRS   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -sqnrQNRS   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -qnrsNRSQ   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -nrsqNRSQ   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -rsqnNRSQ   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -sqnrNRSQ   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -qnrsRSQN   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -nrsqRSQN   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -rsqnRSQN   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -sqnrRSQN   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -qnrsSQNR   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -nrsqSQNR   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -rsqnSQNR   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -sqnrSQNR   ab bca  aa a  abb aab
+								
+echo =====
+								
+# Duplicate flags
+echo aabbab aaabbb | timeout -k 1 2 valgrind -q ./strwrs -NRSQNRSQ   ab bca  aa a  abb aab
+echo aabbab aaabbb |             ./strwrs -nrsqnrsq   ab bca  aa a  abb aab

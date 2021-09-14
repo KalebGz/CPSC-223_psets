@@ -1,0 +1,37 @@
+#!/bin/bash
+# Hybrid: Robustness when remD() fails unexpectedly
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+FILE=$TESTS/f055
+
+XDEQUE_N_REMD=40        \
+  /usr/bin/valgrind -q  \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR
+
+XDEQUE_N_REMD=80        \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR
+
+XDEQUE_N_REMD=120       \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR
+
+XDEQUE_N_REMD=160       \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR
+
+XDEQUE_N_REMD=200       \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR
+
+XDEQUE_N_REMD=240       \
+  ./QsortH $FILE      2>$STDERR
+wc -l < $STDERR

@@ -1,0 +1,19 @@
+#!/bin/bash
+# All or first/last file empty (= no lines)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+/usr/bin/valgrind -q \
+  ./Qsort /dev/null /dev/null /dev/null /dev/null /dev/null
+
+echo =====
+
+XQUEUE_ANNOUNCE=  /usr/bin/valgrind -q \
+  ./Qsort /dev/null $TESTS/f008
+
+echo =====
+
+XQUEUE_ANNOUNCE=  /usr/bin/valgrind -q \
+  ./Qsort $TESTS/f008 /dev/null

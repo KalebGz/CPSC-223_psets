@@ -1,0 +1,56 @@
+#!/bin/bash
+# malloc() fails
+
+TESTS=/c/cs223/Hwk4/Tests
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+# Get #calls to malloc() by createD()
+LD_PRELOAD="$TESTS/libdMalloc.so $TESTS/libxBarrier.so" \
+ DMALLOC_TRACE=1                                        \
+ ./testDeque << END 2> $STDERR
+Ca
+END
+NCREATE=`wc -l < $STDERR`
+
+echo =====
+
+# # Make malloc() fail if called by createD()
+# if (test $NCREATE -gt 0) ; then
+# LD_PRELOAD="$TESTS/libdMalloc.so $TESTS/libxBarrier.so" \
+#  DMALLOC_N_ALLOC=0                                      \
+#  ./testDeque << END
+# Ca
+# END
+# fi
+
+echo =====
+
+# Make malloc() fail when called by addD()
+LD_PRELOAD="$TESTS/libdMalloc.so $TESTS/libxBarrier.so" \
+ DMALLOC_ALLOW=120                                      \
+ DMALLOC_N_ALLOC=$NCREATE                               \
+ XDEQUE_ANNOUNCE=                                       \
+ ./testDeque << END
+Ca
+Aa addD() should fail
+Ia
+Da
+END
+
+echo =====
+
+# Make malloc() fail when called by pushD()
+LD_PRELOAD="$TESTS/libdMalloc.so $TESTS/libxBarrier.so" \
+ DMALLOC_ALLOW=120                                      \
+ DMALLOC_N_ALLOC=$NCREATE                               \
+ XDEQUE_ANNOUNCE=                                       \
+ ./testDeque << END
+Ca
+Pa pushD() should fail
+Ia
+Da
+END

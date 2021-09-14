@@ -1,0 +1,12 @@
+#!/bin/bash
+# N(ff)/N(opt) = N(bf)/N(opt) = 10/6 (no backtracking with very little)
+
+./Binpack 96 14 14 14 14 14 14 33 33 33 33 33 33 49 49 49 49 49 49 -ff
+echo ---
+
+./Binpack 96 14 14 14 14 14 14 33 33 33 33 33 33 49 49 49 49 49 49 -opt
+
+# Requires very little
+# Fail: -optBC -optBE ...
+# backtracks(-opt) = 0
+# -ff = -bf = 10 > 6 = -ffd = -bfd = -opt

@@ -1,0 +1,12 @@
+char:1
+hdr:1
+char:2
+sdq:2
+aardvark:5
+int:6
+grosbeak:6
+char:8
+csq:8
+Barnacle:11
+int:12
+Grosbeak:12

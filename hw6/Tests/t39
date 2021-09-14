@@ -1,0 +1,21 @@
+#!/bin/bash
+# Efficient use of storage: All prefixes of one string
+
+TESTS=/c/cs223/Hwk6/Tests
+OUTPUT=/tmp/Boggle.$USER.$$
+
+trap "/bin/rm -f $OUTPUT" 0 1 2 3 9 15
+
+# Exit if $OUTPUT exists
+test ! -e $OUTPUT || exit
+
+# At most 10 #allocations may require more than 320 (= 40*sizeof(char*)) bytes
+LD_PRELOAD=$TESTS/libdMalloc.so \
+ DMALLOC_ALLOW=300              \
+ DMALLOC_N_ALLOC=10             \
+	     <$TESTS/dict39     \
+  ./Boggle 5 5 abcdejihgfklmnotsrqpuvwxy >& $OUTPUT
+
+LD_PRELOAD=
+
+cat $OUTPUT

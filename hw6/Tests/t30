@@ -1,0 +1,20 @@
+#!/bin/bash
+# Invalid #arguments (error)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+# Too few arguments
+valgrind -q  <$TESTS/dict09 \
+  ./Boggle 3 3                    |& /usr/bin/wc -l
+
+echo -----
+
+# Too many arguments
+valgrind -q  <$TESTS/dict09 \
+  ./Boggle 3 3 epiproust extraArg |& /usr/bin/wc -l
+
+echo -----
+
+# Repeat Test #01
+valgrind -q  <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

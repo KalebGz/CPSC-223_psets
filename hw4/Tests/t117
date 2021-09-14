@@ -1,0 +1,69 @@
+#!/bin/bash
+# -POS,LEN: POS or LEN invalid (fail)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+# POS missing
+/usr/bin/valgrind -q \
+  ./Qsort -   $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# POS signed
+/usr/bin/valgrind -q \
+  ./Qsort -+1 $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# POS signed
+/usr/bin/valgrind -q \
+  ./Qsort --1 $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# POS not an integer
+/usr/bin/valgrind -q \
+  ./Qsort -a  $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# POS not an integer
+/usr/bin/valgrind -q \
+  ./Qsort -1a $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# POS missing
+/usr/bin/valgrind -q \
+  ./Qsort -,8 $TESTS/f002            >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# LEN missing
+/usr/bin/valgrind -q \
+  ./Qsort -1,   $TESTS/f002          >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# LEN signed
+/usr/bin/valgrind -q \
+  ./Qsort -1,+1 $TESTS/f002          >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# LEN signed
+/usr/bin/valgrind -q \
+  ./Qsort -1,-1 $TESTS/f002          >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# LEN not integer
+/usr/bin/valgrind -q \
+  ./Qsort -1,a  $TESTS/f002        >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# LEN not an integer
+/usr/bin/valgrind -q \
+  ./Qsort -1,1a $TESTS/f002          >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# Repeat Test #102
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f055

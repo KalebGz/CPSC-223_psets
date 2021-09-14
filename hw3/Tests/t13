@@ -1,0 +1,6 @@
+# Infinite expansion
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -s  a b  b c  c c  <<END
+aaaaaaaa
+END

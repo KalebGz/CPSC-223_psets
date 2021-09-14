@@ -1,0 +1,16 @@
+#!/bin/bash
+# -POS[,LEN]: POS <= strlen(line) and POS+LEN > strlen(line)
+# -POS[,LEN]: POS > strlen(line)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+/usr/bin/valgrind -q \
+  ./Qsort -3,100 $TESTS/f061
+
+
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort -7 $TESTS/f062

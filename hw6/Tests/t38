@@ -1,0 +1,21 @@
+#!/bin/bash
+# Efficient use of storage: Limited set of letters
+
+TESTS=/c/cs223/Hwk6/Tests
+OUTPUT=/tmp/Boggle.$USER.$$
+
+trap "/bin/rm -f $OUTPUT" 0 1 2 3 9 15
+
+# Exit if $OUTPUT exists
+test ! -e $OUTPUT || exit
+
+# At most 10 #allocations may require more than 320 (= 40*sizeof(char*)) bytes
+LD_PRELOAD=$TESTS/libdMalloc.so \
+ DMALLOC_ALLOW=300              \
+ DMALLOC_N_ALLOC=10             \
+	     <$TESTS/dict38     \
+  ./Boggle 2 2 tase         >& $OUTPUT
+
+LD_PRELOAD=
+
+cat $OUTPUT

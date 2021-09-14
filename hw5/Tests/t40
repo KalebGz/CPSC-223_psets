@@ -1,0 +1,3 @@
+# 5 x 5 problem with duplicates
+
+./Nine20 5 5 50 AaaaaaAaaaaa-aaaaaAaaaaaA aaaaAaaaAaaa-aaaAaaaAaaaa | wc -l

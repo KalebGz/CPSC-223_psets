@@ -1,0 +1,13 @@
+#!/bin/bash
+# Heuristic C necesary and sufficient
+./Binpack 1403 711 710 709 708 707 706 705 704 703 702 701 511 510 509 508 507 506 505 504 503 502 501 -opt
+echo ---
+
+# Requires C
+# Fail: -optC
+# backtracks(-opt)     = 986400
+# backtracks(-optABDE) = 986400
+# -ff = -bf = -ffd = -bfd = 11 = -opt > lower
+
+# -opt < heuristic
+./Binpack 64 19 18 17 15 24 23 22 21 32 -opt

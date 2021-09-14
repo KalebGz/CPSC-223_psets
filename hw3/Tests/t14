@@ -1,0 +1,30 @@
+#/bin/csh
+# Illegal arguments
+
+echo abababab | timeout -k 1 2 valgrind -q ./strwrs -quit    ab ba  |& wc -l
+echo abababab |             ./strwrs -restart ab ba  |& wc -l
+echo abababab |             ./strwrs -next    ab ba  |& wc -l
+echo abababab |             ./strwrs -start   ab ba  |& wc -l
+echo abababab |             ./strwrs -Quit    ab ba  |& wc -l
+echo abababab |             ./strwrs -Restart ab ba  |& wc -l
+echo abababab |             ./strwrs -Next    ab ba  |& wc -l
+echo abababab |             ./strwrs -Start   ab ba  |& wc -l
+			     
+echo =====
+
+echo abababab | timeout -k 1 2 valgrind -q ./strwrs Qq       ab ba  |& wc -l
+echo abababab |             ./strwrs Qn       ab ba  |& wc -l
+echo abababab |             ./strwrs Qr       ab ba  |& wc -l
+echo abababab |             ./strwrs Qs       ab ba  |& wc -l
+echo abababab |             ./strwrs Nq       ab ba  |& wc -l
+echo abababab |             ./strwrs Nn       ab ba  |& wc -l
+echo abababab |             ./strwrs Nr       ab ba  |& wc -l
+echo abababab |             ./strwrs Ns       ab ba  |& wc -l
+echo abababab |             ./strwrs Rq       ab ba  |& wc -l
+echo abababab |             ./strwrs Rn       ab ba  |& wc -l
+echo abababab |             ./strwrs Rr       ab ba  |& wc -l
+echo abababab |             ./strwrs Rs       ab ba  |& wc -l
+echo abababab |             ./strwrs Sq       ab ba  |& wc -l
+echo abababab |             ./strwrs Sn       ab ba  |& wc -l
+echo abababab |             ./strwrs Sr       ab ba  |& wc -l
+echo abababab |             ./strwrs Ss       ab ba  |& wc -l

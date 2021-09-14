@@ -1,0 +1,7 @@
+#!/bin/bash
+# epriproust with /c/cs223/Doc/words (4+ letter words)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  --leak-check=yes <$TESTS/dict02 \
+  ./Boggle 3 3 epiproust

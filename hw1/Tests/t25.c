@@ -1,0 +1,3 @@
+char *hdr = "Unterminated string (graceful)";
+
+char *aardvark = "Unterminated string ...

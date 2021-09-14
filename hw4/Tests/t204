@@ -1,0 +1,71 @@
+#!/bin/bash
+# Add to both ends of deque; multiple deques
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << \END
+Ca
+Pa ##### ADD TO HEAD OF DEQUE #####
+Ia
+Ra
+Da
+
+Ca
+Aa ##### ADD TO TAIL OF DEQUE #####
+Ia
+Ra
+Da
+
+Ca
+Aa ##### ADD TO BOTH ENDS OF DEQUE #####
+Ra
+Aa   So she was considering in her own mind (as well as she could,
+Aa of getting up and picking the daisies, when suddenly a White
+Aa Rabbit with pink eyes ran close by her.
+Ra
+Pa for the hot day made her feel very sleepy and stupid), whether
+Ra
+Pa the pleasure of making a daisy-chain would be worth the trouble
+Ra
+Ra
+Ra
+Da
+
+Ca
+Aa ##### TWO DEQUES #####
+Ra
+Cb
+Aa   There was nothing so VERY remarkable in that; nor did Alice
+Pb it over afterwards, it occurred to her that she ought to have
+Aa itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought
+Pb think it so VERY much out of the way to hear the Rabbit say to
+Ra
+Rb
+Ra
+Rb
+Da
+Db
+
+Ca
+Aa ##### MANY DEQUES #####
+Ra
+Cb Cc Cd Ce Cf Cg Ch Ci Cj Ck Cl Cm Cn Co Cp
+Aa                            CHAPTER VII
+Ab                          A Mad Tea-Party
+Ac   There was a table set out under a tree in front of the house,
+Pd and the March Hare and the Hatter were having tea at it:  a
+Ae Dormouse was sitting between them, fast asleep, and the other two
+Pf were using it as a cushion, resting their elbows on it, and talking
+Ag over its head.  `Very uncomfortable for the Dormouse,' thought Alice;
+Ph `only, as it's asleep, I suppose it doesn't mind.'
+Ai   The table was a large one, but the three were all crowded
+Pj together at one corner of it:  `No room!  No room!' they cried
+Ak out when they saw Alice coming.  `There's PLENTY of room!' said
+Pl Alice indignantly, and she sat down in a large arm-chair at one
+Am end of the table.
+Pn   `Have some wine,' the March Hare said in an encouraging tone.
+Ao   Alice looked all round the table, but there was nothing on it
+Pp but tea.  `I don't see any wine,' she remarked.
+
+Ra Rb Rc Rd Re Rf Rg Rh Ri Rj Rk Rl Rm Rn Ro Rp
+
+Da Db Dc Dd De Df Dg Dh Di Dj Dk Dl Dm Dn Do Dp
+END

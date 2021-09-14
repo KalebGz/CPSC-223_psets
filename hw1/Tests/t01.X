@@ -1,0 +1,13 @@
+char:1
+hdr:1
+int:3
+main:3
+char:4
+c:4
+int:5
+greet:5
+char:5
+char:5
+greet:7
+c:7
+return:8

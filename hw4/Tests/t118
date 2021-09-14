@@ -1,0 +1,27 @@
+#!/bin/bash
+# -POS,LEN: No files
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+POSLEN="-1,1"
+trap "/bin/rm -f $STDOUT $STDERR ./$POSLEN" 0 1 2 3 9 15
+
+
+ln -s $TESTS/f055 ./$POSLEN
+
+# -POS,LEN with no files
+/usr/bin/valgrind -q \
+  ./Qsort $POSLEN                    >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# ./-POS,LEN
+/usr/bin/valgrind -q \
+  ./Qsort ./$POSLEN                  >$STDOUT 2>$STDERR
+wc < $STDOUT ; wc -l < $STDERR ; echo -----
+
+# Repeat Test #102
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f055

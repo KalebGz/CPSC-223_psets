@@ -1,0 +1,6 @@
+#!/bin/bash
+# Must use Heuristic E (ACE required and sufficient)
+
+./Binpack 1964 1100 1200 1300 1400 1500 1600 1700 1800 100 200 300 400 500 600 700 800 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 -opt
+
+./Binpack 64 19 18 17 15 24 23 22 21 32 -opt

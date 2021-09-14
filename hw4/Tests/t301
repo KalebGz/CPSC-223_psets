@@ -1,0 +1,15 @@
+#!/bin/bash
+# 1 file, 55 lines, unsorted
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+/usr/bin/valgrind -q \
+  ./QsortH $TESTS/f055 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR

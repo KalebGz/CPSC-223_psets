@@ -1,0 +1,13 @@
+Tests
+
+
+LEAKS
+valgrind -q --leak-check=yes ./Nine20 10 23615847- 12345678- | wc -l
+
+echo
+
+valgrind -q --leak-check=yes ./Nine20 10 12345678- 23615847- | wc -l
+
+
+SIMPLE
+valgrind --leak-check=full  ./Nine20 10 1234-5678 123-45678 ; /bin/echova

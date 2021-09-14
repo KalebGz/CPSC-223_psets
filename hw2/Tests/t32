@@ -1,0 +1,16 @@
+#!/bin/bash
+# Heuristics C & E necessary and sufficient
+
+./Binpack 20250 16000 15000 14000 13000 12000 11000 9000  8000  7000  6000  5000  4000 102 101  78 77 76 75 74 73 72 71 70 69 68 67 66 65 64 63 -opt
+echo ---
+
+# Requires CE
+# Fail: -optC -optE
+# backtracks(-opt)  = 3288927
+# backtracks(-optA) = 3288927
+# backtracks(-optB) = 3288927
+# backtracks(-optD) = 3288927
+# -ff = -ffd = -bf = -bfd = 7 > 6 = -opt = lower
+
+# -opt > lower
+  ./Binpack 40  9  9 22 22 14 14 15 15 -opt

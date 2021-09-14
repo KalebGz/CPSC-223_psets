@@ -1,0 +1,16 @@
+char:1
+hdr:1
+char:2
+ssq:2
+barnacle:3
+char:4
+sn:4
+devilray:5
+char:6
+so:6
+elephant:7
+char:8
+sh:8
+flamingo:9
+int:10
+grosbeak:10

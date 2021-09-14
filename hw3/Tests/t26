@@ -1,0 +1,10 @@
+# Combinations of N with [q,n,r,s]
+
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | /c/cs223/bin/leak.pl +stdout \
+  ./strwrs -Nq  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | /c/cs223/bin/leak.pl +stdout \
+  ./strwrs -Nn  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | /c/cs223/bin/leak.pl +stdout \
+  ./strwrs -Nr  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | /c/cs223/bin/leak.pl +stdout \
+  ./strwrs -Ns  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX

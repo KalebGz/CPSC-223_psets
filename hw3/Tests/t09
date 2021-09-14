@@ -1,0 +1,20 @@
+# Default options
+
+# aabbab | ./strwrs     ab bca
+echo "aabbab" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs     ab bca
+
+echo -----
+
+# aaabbb | ./strwrs -n   aa a  abb aab
+echo "aaabbb" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs -n   aa a  abb aab
+
+echo -----
+
+# aaabbb | ./strwrs      aa a  abb aab
+echo "aaabbb" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs      aa a  abb aab

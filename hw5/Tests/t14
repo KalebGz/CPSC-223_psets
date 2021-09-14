@@ -1,0 +1,8 @@
+# Reachability
+# Short 3 x 3 problem (< 9 moves)
+
+valgrind -q --leak-check=yes ./Nine20 10 23615847- 12345678- | wc -l
+
+echo
+
+valgrind -q --leak-check=yes ./Nine20 10 12345678- 23615847- | wc -l

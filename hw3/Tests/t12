@@ -1,0 +1,8 @@
+# Storage Leak?  Explode and crash
+
+/c/cs223/bin/leak.pl +stdout \
+  ./strwrs -Nn  a bb  b cccc  c dddddddd  d eeeeeeeeeeeeeeee  eeee f  ffff g <<END
+a
+aa
+aaa
+END

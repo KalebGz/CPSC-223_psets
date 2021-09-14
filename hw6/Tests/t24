@@ -1,0 +1,26 @@
+#!/bin/bash
+# Random 5 x 5 board (traditional)
+				
+TESTS=/c/cs223/Hwk6/Tests
+
+# /c/cs223/Doc/words (4+ letter words)
+valgrind -q       <$TESTS/dict02 \
+  ./Boggle -t 5 5 gifspeiztnadhdtaabtvatnar
+
+echo -----
+
+# /c/cs223/Doc/words (6+ letter words)
+/c/cs223/bin/run  <$TESTS/dict14 \
+  ./Boggle -t 5 5 wtfatistbrhdoerrobuascgle
+
+echo -----
+
+# /c/cs223/Doc/words (6+ letter words)
+/c/cs223/bin/run  <$TESTS/dict14 \
+  ./Boggle -t 5 5 orhaapwioduailocieimgirct
+
+echo -----
+
+# /c/cs223/Doc/words (6+ letter words)
+/c/cs223/bin/run  <$TESTS/dict14 \
+  ./Boggle -t 5 5 aeyarvgniavwoaaivseoidgse

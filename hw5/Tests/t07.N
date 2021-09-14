@@ -1,0 +1,16 @@
+ABC-
+A-CB
+-ACB
+
+ABC-
+AB-C
+-BAC
+B-AC
+BCA-
+
+ABC-
+A-CB
+-ACB
+CA-B
+CAB-
+C-BA

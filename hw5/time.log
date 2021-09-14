@@ -1,0 +1,46 @@
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        02:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    04/16  12:52pm  1:00  Created the header file and starte on the base structure of the Hash table function
+    04/16  05:02pm  0:30  Tried to implement insertH and the grow function for dealing with when the load factor gets too bif
+    04/18  07:42pm  0:45  I started thinking about the chains for the collison and realized that i need to make a struct for the chains themseleves because
+                            I need to know their length whenever iterating through them and also think i have a plan for implementing insertH
+    04/18  09:30pm  1:00  I fixed the bugs in my Hash.c program after i implemented the function to insert an element to the hash function and made adjustments to 
+                            have the triples sorted when inserted
+    04/18  10:30pm  0:30  finsihed implementing the growth hash function. started implementing the search function.
+    04/19  02:00am  1:00  created a test file for my Hash ADT but i keep running into the error "undefined reference to `createH'" error when trying to make it so implement implement i spent
+                            most of the time debugging that and reading up on makefiles
+    04/19  11:30pm  1:00  figured out that the error was coming from incorrectly naming my create function and then tried to fix my valgrind invalid write errors
+    04/20  12:40pm  0:15  was trying to debug the insertH function. I don't know how to copy over the contents of one pointer onto another. tried to use memcpy but its not working for some reason.
+    04/20  03:40pm  1:00  more depugging my putinChain method that tries to place a new triple into the array of triple pointers. Figured out I was making a malloc error but i still can't figure out how to do 
+                            pointer array accessing without derefrencing
+    04/21  08:40pm  1:00  figured out that i was debugging my testFunction wrong but it's still not updating the pointer for some reason.
+    04/21  10:20pm  1:00  I think my hash implementation is all working now and i started working on flag parsing for Nine20
+    04/21  11:40pm  1:00  More work on flag parsing and started on the BFS algorithm
+    04/21  06:20pm  1:00  I created a macro for outputting an error message for flag parsing errors and also started reformating hash.c because I need to return a truple from searchH to get the nsteps and from pointer
+    04/21  08:20pm  1:00  Implemented most of the BFS Algorithm. Running into a bug because of the differences between a char** and char*[] and so looking into learn more about accessing pointers to the elements in a char* array
+    04/22  03:00pm  1:00  Implemented the printSeq function for printing the positions and am also debugging a scenerio where a previous position that's been inserted into the hash can't be found
+    04/22  05:00pm  1:00  removed the condition to check whether the key is less than the element being looked out in SearchH and properly implemented the printSequence function so i'm passing some tests but I'm still debugging why
+                            I needed to remove that condition. Also implemented searching for the item with the smallest steps in searchH but it isn't working for some reason.
+    04/22  08:10pm  1:00  reformatted table to be a double pointer which took a while and still tried to fix what i assume is a sorting error in my sort function
+    04/23  02:10am  1:00  implemted the insert function using realloc and tried to get rid of lost memory be strduping whenever the hash is expanded but nothing seems to work
+    04/23  03:50am  0:15  Cleaned up code and did a bit of debugging
+    04/23  04:50am  1:00  mostly debugging, reformatted grow so that the old hash pointer is updated
+    04/23  06:50am  1:00  I stopped freeing nprime because the old hash table was dependednt on it and that got rid of all my errors for some reason. brain is too fried to trace this right now
+
+    ----
+                    18:15  TOTAL time spent
+                  
+
+    I discussed my solution with: 
+    
+
+    Difficulties:
+  I thought that the reachability criteria was really difficult because i started to deal with it after i had implemented my entire program and I realied that my implementation of Hash.c itself
+  was causing problems and I couldn't figure out why my destory function wasn't working which was necessary for the deleting the old hash but it wasn't working for some reason. I just realized while writting this too
+  that i didn't have to recreate a new hash but i could have just realloc'ed it which would have save me some time. Testing hash.c was difficult because there were no public tests and i don't think my tests were sufficient

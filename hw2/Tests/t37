@@ -1,0 +1,8 @@
+#!/bin/bash
+# BIN_SIZE = 0
+
+./Binpack 13 9 2 2 5 5 3 -ff
+echo -----
+
+/c/cs223/bin/run \
+./Binpack 0 -ff -bf -ffd -bfd | wc -l

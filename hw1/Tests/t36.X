@@ -1,0 +1,10 @@
+char:1
+hdr:1
+int:3
+x_a:3
+int:4
+_x_b:4
+int:5
+x_c_:5
+int:6
+__x__d__:6

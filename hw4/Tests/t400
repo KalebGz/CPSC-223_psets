@@ -1,0 +1,21 @@
+#!/bin/bash
+# Sort $TESTS/f8192 quickly and correctly?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+./Qsort $FILE                 2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR) then
+  echo "WARNING: Qsort failed to sort $FILE.  Thus it may fail"
+  echo "the following tests even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi

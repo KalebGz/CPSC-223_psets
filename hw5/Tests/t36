@@ -1,0 +1,5 @@
+# Solution with exact number of moves
+
+./Nine20 27 12345678- 14725863- | wc -l ; echo
+./Nine20 28 12345678- 14725863- | wc -l ; echo
+./Nine20 29 12345678- 14725863- | wc -l

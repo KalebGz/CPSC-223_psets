@@ -1,0 +1,19 @@
+# 4x3 and 3x4 problems
+
+valgrind -q  ./Nine20 4 3 10 -bcaefdhigjk abcdefghijk- ; echo
+valgrind -q  ./Nine20 4 3 10 abcdefghijk- -bcaefdhigjk
+
+echo =====
+
+	     ./Nine20 4 3 20 abcdefghijk- gdajebkhc-if | wc -l
+	     ./Nine20 4 3 20 gdajebkhc-if abcdefghijk- | wc -l
+	      
+echo =====
+
+	     ./Nine20 3 4 10 -bcdafgheijk abcdefghijk- ; echo
+	     ./Nine20 3 4 10 abcdefghijk- -bcdafgheijk
+
+echo =====
+
+	     ./Nine20 3 4 18 abcdefghijk- ieabjfgck-hd | wc -l
+	     ./Nine20 3 4 19 abcdefghijk- ieabjfgc-khd | wc -l

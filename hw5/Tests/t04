@@ -1,0 +1,18 @@
+# Very short solutions (< 7 moves)
+
+valgrind -q  ./Nine20 7 123456-78 12345678- ; /bin/echo
+valgrind -q  ./Nine20 7 123-56478 12345678- ; /bin/echo
+valgrind -q  ./Nine20 7 -23156478 12345678- ; /bin/echo
+valgrind -q  ./Nine20 7 2-3156478 12345678- ; /bin/echo
+	     ./Nine20 7 12345678- 123456-78 ; /bin/echo
+	     ./Nine20 7 12345678- 123-56478 ; /bin/echo
+	     ./Nine20 7 12345678- -23156478 ; /bin/echo
+	     ./Nine20 7 12345678- 2-3156478 ; /bin/echo
+	     ./Nine20 7 12345678- 12-453786 ; /bin/echo
+	     ./Nine20 7 12345678- 1-2453786 ; /bin/echo
+	     ./Nine20 7 12345678- -12453786 ; /bin/echo
+	     ./Nine20 7 12345678- 412-53786 ; /bin/echo
+	     ./Nine20 7 12-453786 12345678- ; /bin/echo
+	     ./Nine20 7 1-2453786 12345678- ; /bin/echo
+	     ./Nine20 7 -12453786 12345678- ; /bin/echo
+	     ./Nine20 7 412-53786 12345678-

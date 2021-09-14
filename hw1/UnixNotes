@@ -1,0 +1,37 @@
+
+Useful Commands:
+
+Download Files
+    cp t01.c ~/cs223/ 
+    scp kzg2@node.zoo.cs.yale.edu:~/cs223/Makefile .
+
+Submit
+    /c/cs223/bin/submit 1 Makefile Cxref.c time.log
+    /c/cs223/bin/check  1
+
+Test random stuff
+    ./Cxref < /home/accts/kzg2/cs223/hw1/Tests/ugly/ugly6.c
+    ./Cxref < /home/accts/kzg2/cs223/hw1/Tests/ugly/ugly9.c | diff - /home/accts/kzg2/cs223/hw1/Tests/ugly/ugly9.X
+
+Test 1 file
+    ./Cxref < /c/cs223/Hwk1/Tests/t01.c
+
+    
+Test all  
+    /c/cs223/Hwk1/test.Cxref
+
+Test Staff Input
+    /c/cs223/Hwk1/Cxref 
+    /c/cs223/Hwk1/Cxref < /home/accts/kzg2/cs223/hw1/Tests/ugly/ugly9.c
+
+Test my input
+    /home/accts/kzg2/cs223/hw1/Cxref
+
+Home Directory
+    /home/accts/kzg2/cs223/hw1
+
+Staff Directory
+    /c/cs223/Hwk1/
+
+
+    option + shift + f = autoformat

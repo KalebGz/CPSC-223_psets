@@ -1,0 +1,17 @@
+#!/bin/bash
+# Invalid flag
+# Detect before first flag executed or when encountered
+
+./Binpack 13 9 2 2 5 5 3 -ff
+echo -----
+
+/c/cs223/bin/run \
+./Binpack 13 9 2 2 5 5 3 -fff           | wc -l
+echo -----
+
+/c/cs223/bin/run \
+./Binpack 13 9 2 2 5 5 3 -fff -ff       | wc -l
+echo -----
+
+/c/cs223/bin/run \
+./Binpack 13 9 2 2 5 5 3 -ff -fff -ff   | grep -v "[-]ff  2" | wc -l

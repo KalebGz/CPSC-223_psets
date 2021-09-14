@@ -1,0 +1,7 @@
+# Input line with no newline
+
+/bin/echo -n 'Computer Science' | \
+timeout -k 1 2 valgrind -q \
+  ./strwrs -n e- 'e Department'
+
+/bin/echo

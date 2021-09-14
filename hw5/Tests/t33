@@ -1,0 +1,21 @@
+#!/bin/bash
+# Illegal option (error)
+
+STDOUT=/tmp/Nine20.stdout.$$
+STDERR=/tmp/Nine20.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 -not-an-option 12345678- 1234567-8
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 -really-not-an-option 2 4 1234567- 123456-7
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Repeat last puzzle from Test #04
+valgrind -q  ./Nine20 7 412-53786 12345678-

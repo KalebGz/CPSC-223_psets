@@ -1,0 +1,18 @@
+#!/bin/bash
+# BIN_SIZE or ITEM_SIZE not sequence of digits
+
+# Valid values
+./Binpack 11 1 2 3 -ff -ffd | wc -l
+./Binpack 11 1 2 3 -bf -bfd | wc -l
+
+# Invalid BIN_SIZE
+./Binpack +11 1 2 3 -ff -ffd | wc -l
+./Binpack 11. 1 2 3 -bf -bfd | wc -l
+./Binpack 11a 1 2 3 -ff -ffd | wc -l
+./Binpack abc 1 2 3 -bf -bfd | wc -l
+
+# Invalid ITEM_SIZE
+./Binpack 11 +1 2 3 -ff -ffd | wc -l
+./Binpack 11 1. 2 3 -bf -bfd | wc -l
+./Binpack 11 1a 2 3 -ff -ffd | wc -l
+./Binpack 11 ab 2 3 -bf -bfd | wc -l

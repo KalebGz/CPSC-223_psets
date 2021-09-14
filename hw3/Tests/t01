@@ -1,0 +1,6 @@
+#!/bin/bash
+# aabbab | ./strwrs -q  ab bca
+
+echo "aabbab" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs -q  ab bca

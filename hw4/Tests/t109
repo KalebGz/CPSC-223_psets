@@ -1,0 +1,9 @@
+#!/bin/bash
+# Free all storage?: One file, 55 lines, unsorted
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+/c/cs223/bin/leak.pl +stdout \
+   ./Qsort $TESTS/f055

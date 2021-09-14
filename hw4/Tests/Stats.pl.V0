@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+#    % Stats.pl FILE*
+#
+# Run QsortH to sort the specified files and report the #lines, #compares,
+# #addD's, #pushD's, and #remD's required.
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+echo "File(s): $*"
+echo
+
+########################
+# Count the number of lines in the files
+NLIN=`sort $* | wc -l`
+echo "#lines = $NLIN"
+
+########################
+# Verify that QsortH can sort correctly
+./QsortH $*                  2>$STDERR  >$STDOUT
+
+sort -c $STDOUT              2>>$STDERR
+sort $* | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "WARNING: QsortH failed to sort $*."
+  echo ----- ; cat $STDERR ; echo -----
+  exit
+fi
+
+########################
+# Count #compares required
+LD_PRELOAD=$TESTS/libxStrcmp.so \
+ ./QsortH $*                 2>$STDERR  >$STDOUT
+NCMP=`cat $STDERR`
+echo "#compares = $NCMP"
+echo
+
+LIMIT=$((2 * ($NCMP + $NLIN)))
+echo "2*(#compares+#lines) = $LIMIT"
+
+LIMIT=$((4 * ($NCMP + $NLIN)))
+echo "4*(#compares+#lines) = $LIMIT"
+echo
+
+########################
+# Sort unsorted file
+XDEQUE_SUMMARY=                  \
+ ./QsortH $*                 2>$STDERR  >$STDOUT
+
+perl -p -e 's{^xDeque: Total }{}' $STDERR

@@ -1,0 +1,43 @@
+#!/bin/bash
+# Use of malloc()/realloc() outside Deque.c
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+LIMIT=$((1 + 8192 + 1))           # #calls to malloc()/realloc() by getline()
+LIMIT=$(($LIMIT + 2))             # #calls by fopen() and printf()/puts()
+LIMIT=$(($LIMIT + 1))             # One more for good measure!
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+########################
+# Verify that Qsort can sort quickly and correctly
+./Qsort $FILE                 2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff - $STDOUT     2>>$STDERR >&2
+
+if (test -s $STDERR) then
+  echo "WARNING: Qsort failed to sort $FILE.  Thus it will fail"
+  echo "this test even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Limit use of malloc()/realloc() to getLine(), fopen(), and printf()
+LD_PRELOAD="$TESTS/libhMalloc.so $TESTS/libxBarrier.so" \
+HMALLOC_ALLOW=24                                        \
+HMALLOC_N_ALLOC=$LIMIT                                  \
+ ./QsortH $FILE                 2>$STDERR >$STDOUT
+
+if (test -s $STDERR) then
+  echo "Qsort uses malloc()/realloc() outside getLine() and Deque.c."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+
+
+

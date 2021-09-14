@@ -1,0 +1,24 @@
+#!/bin/bash
+# Hybrid: Some files empty (Test #302 with moving deques)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+FILES="$TESTS/f054 /dev/null $TESTS/f056"
+
+XDEQUE_MOVE= /usr/bin/valgrind -q \
+  ./QsortH $FILES               2>$STDERR  >$STDOUT
+
+head -1 $STDOUT ; echo ----- ; cat $STDERR
+
+echo =====
+
+/usr/bin/valgrind -q \
+  ./QsortH $FILES               2>$STDERR  >$STDOUT
+
+sort $FILES | diff - $STDOUT       2>>$STDERR >&2

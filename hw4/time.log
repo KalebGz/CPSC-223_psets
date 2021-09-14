@@ -1,0 +1,72 @@
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        07:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    03/28  08:02pm  1:00  I had a hard time trying to figure out the syntax for creating the deque struct and where i needed to intiialize the
+                            fields for the struct.(I am especially having a hard time understanding the mention of a variable after the defnition of a struct
+    03/28  12:45pm  1:00  I figured out that most of my comfusion stemmed from me interpretting the reading as telling me that the variables defined after the
+                            defintion of a struct as syntax for automatically mallocing space for the given struct given those varaibles which didn't make sense.
+                            I realized that this confusion was because the walkthrough used different versions of using typedef and so i didn't know that those variables
+                            after the defintion of a struct were simply for renaming the datatype. I was able to write the functions up to headD() after that
+    03/29  07:35pm  1:00  I finished my deque implementation and figured out how to test my implementation but i realized that I was having memeory problems and when diagnosing
+                            that i realized that i implemented my remD without copying the tail stack onto the head if the stack is empty which made me realize that I implemted 
+                            my stacks wrong because the pointers in the deque struct point to the end of the stack(top) which isn't right beacuse I can't go backwards when copying
+    03/29  07:35pm  1:00  I realized that my stack implementation isn't wrong and after implenting remD, I have been messign around with testDeque to see if my deque works and making lottle
+                            changes to my other functions.
+    03/30  10:02pm  1:00  My deque.c implementation seg faults whenever trying to print from the tail stack for some reason so i've just been trying to debug that
+    03/31  02:32pm  0:30  I was able to fix the seg fault and the double freeing error that i was running into but i am still not 100% sure my Deque implementation works because I was getting random
+                            errors but then i remade example and everything started giving me the same output as Correct so who knows
+    03/31  04:51pm  1:00  I did as much testing as I could with deque including the begining 200 tests on the public tests and i didn't come up with any errors so I am pretty confident in their functionality
+                            I then started working on qsort and was able to figure out flag parsing.
+    03/31  07:31pm  1:00  I went to office hours and got help figuring out how to test my deque implementation and figured out how to properly test my Qsort and Deque. I also create the base code for reading Files
+                            for Qsort and i am in a position to start sketching out my insertion sort implementation for Qsort. I still need to tests my file input and dealing system.
+    03/31  07:31pm  1:00  I've been trying to understand quicksort and tried to approach it by programming the base recursive function but realized that i hav no understanding as to how the logic works so i've been 
+                            drawing out the theory with deques. I also messed around with edge casing for the flags a bit but isdigit acts weird with longs for some reason.
+    04/01  07:31pm  1:00  Implemented error free file reading system and drew out the algorithm for quicksort with 2 stacks and a queue
+    04/02  07:31pm  1:00  I started writting out the structure for the recursive function and as I was setting up the orientation of the the deques before first being inputted into the recursive function, i realised that
+                            my algorithm doesn't really work because storing the pivot doesn't reallly work so i am just dealing with the pre quicksort Deques and going to redo the theory
+    04/03  04:15pm  1:00  I kept on having problems with saving my pivots and so I took a long time going over my implementation of the deque before realizing that I was just setting up my inputs to remD incorrectly and I
+                            also took a long time developing sanity check procedures to check the status of my queues and problems with the files that I created like existence of new line character made me take the time to
+                            go into trying to understand the functionality of functions like printf() when i just needed to click enter once on my inputted file
+    04/03  04:15pm  1:00  I spent some time tracing  the algorithm and was going back and forth trying to copy the logic into code and realizeing kinks/edge cases i need to deal with. I think my implementation is wrong though
+                            because it doesn't use the tip from note 5
+    04/04  12:02pm  1:00  I realized that there was no reason for trying to implement this program just using stacks and I realized that using 1 stack and 1 queue to sort/partition and 1 stack for storing the sorted array,
+                            my algorithm would work so i have just been trying to reformat it for that and trying to get rid of the irrelevant code that i wrote to try make partitioning with 2 stacks work.
+    04/05  11:02pm  1:00  Reformating the previous code into the new algorithm was a bad idea and I can't use the head function to check the status of the deques so I have been making small changes constantly and it's hard to debug
+                            so one thing is messing up another thing and i've just been stuck in a sad loop. I've got a variable in the recursive fn that will print the status of the deques(only once though) so debugging has become a little
+                            easier but it's still difficult. I was thinking about implementing a headD like f(n) that wouldn't flip the outputs for stacks but i don't know if that would work/if it would be worth it because i have to change the makefile
+                            devlop the function and then change it all back at the end
+    04/06  11:02am  1:00  Finally figured out how to use the VS code debugger which has made debugging so much faster because i just have to click one button to see the status of the variables inside the deques throughout the different calls to quicksort
+    04/06  01:58pm  0:30  I am trying to reformat my algorithm to work with the example from the walkthrough now
+    04/06  03:28pm  1:00  I got the example from the walkthrough to work but i realized that the implementation was very case specific so i have to fix it
+    04/06  05:28pm  1:00  I am not sure what the base case is supposed to be because i have too many if statements which are messing up with each new input
+    04/07  12:10pm  1:00  I realized that I was going about the partitioning system wrong as i was trying to sort both stacks withing one call of the recursive function but now i have restarted and am tyring to sort one stack and then passing the
+                            two different stacks to it one after the other and then pushing the pivot in between those two
+    04/07  01:20pm  1:00  I have a partially working quick sort function but I'm having a difficult time integrating the sorting of the items right of the pivot
+    04/07  06:20pm  1:00  I am close but I am missing an important part of the process on how the differnt recursive calls are integrated
+    04/07  08:12pm  1:00  Went to office hours and removed my base case for the second stack and it made it easier to think about the recursive nature of this function and I started reformat it
+    04/07  10:02pm  1:00  I started passing 2 tests from test.Qsort after implementing the integration of the second stack properly(Having it ordered in descending order)
+    04/08  12:12pm  1:00  The qsort function is working for the most time. I was mostly just debugging valgrind errors for when using strlen()
+    04/08  03:32pm  1:00  I haven't made much progress. My qsort function messes up for really large values for some reason(lost nodes and wrong order) and i've been truing to debug it.
+    04/08  03:32pm  1:00  I realized i was apssing in the wrong parameter for the number of items in numres when sorting the right stack and everything works
+    ----
+                    26:00  TOTAL time spent
+           
+
+    I discussed my solution with: 
+    
+
+    Difficulties:
+  The memeory allocation systems of structs doesn't really seem very intuitive. I was especially confused by 
+how a variable after the defintion of a struct functions and what it's purpose was.
+This is probably one of the hardest things that i have to work on because I am really bad at thinking about recursion.
+I approached it with a top down version and spent 2 days doing useless working trying to implement a recursive function
+that had for loops and attempted to sort one level of the quicksort call for both stacks and I not sure right now exactly what I
+was trying to do but it wasn't effective. This was also a wake up call for my trash notation and diagraming skills because I would
+regularly get confused when trying to test inputs by hand. I threw myself into the code before understanding what its supposed to do
+and i paid the price. :(
+   

@@ -1,0 +1,23 @@
+#!/bin/bash
+# Implements rehashing?
+
+# Limit available space when hash table and deque are very small
+TRAYS=1024
+LIMIT=$(($TRAYS * 100))
+
+
+	
+./Nine20 10 12345678- 236-58147
+HEAP=`/c/cs223/bin/maxHeap ./Nine20 10 12345678- 236-58147 2>&1 >/dev/null`
+if (test "$HEAP" -gt $LIMIT -o -v DEBUG_SCRIPT) then
+  echo "Nine20 uses $HEAP bytes > $LIMIT = 100 * $NSTATES positions in table"
+fi
+
+echo -----
+
+./Nine20 2 5 50 123456789- 123456798-
+
+echo =====
+
+# Repeat last puzzle from Test #04
+valgrind -q  ./Nine20 7 412-53786 12345678-

@@ -1,0 +1,8 @@
+# Long 4x4 problem
+
+./Nine20 4 4 16 abcdefghklonjim- abcdefghijklmno- | wc -l
+./Nine20 4 4 16 abcdefghijklmno- abcdefghklonjim- | wc -l
+
+echo =====
+./Nine20 4 4 17 abcdefghijklmno- bcdhafglejko-imn | wc -l
+./Nine20 4 4 17 bcdhafglejko-imn abcdefghijklmno- | wc -l

@@ -1,0 +1,15 @@
+-abcefgdijkhmnol
+a-bcefgdijkhmnol
+ab-cefgdijkhmnol
+abc-efgdijkhmnol
+abcdefg-ijkhmnol
+abcdefghijk-mnol
+abcdefghijklmno-
+
+abcdefghijklmno-
+abcdefghijk-mnol
+abcdefg-ijkhmnol
+abc-efgdijkhmnol
+ab-cefgdijkhmnol
+a-bcefgdijkhmnol
+-abcefgdijkhmnol

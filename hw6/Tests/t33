@@ -1,0 +1,13 @@
+#!/bin/bash
+# Empty dictionary
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  < /dev/null \
+  ./Boggle 3 3 epiproust
+
+echo -----
+
+# Repeat Test #01
+valgrind -q  <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

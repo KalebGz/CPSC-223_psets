@@ -1,0 +1,26 @@
+#!/bin/bash
+# Add to head of deque; test whether empty
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << \END
+Ca
+Pa ##### PUSH ON HEAD OF DEQUE #####
+Ha
+Ia
+Ra
+Da
+
+Ca
+Pa thought Alice `without pictures or conversation?'
+Pa pictures or conversations in it, `and what is the use of a book,'
+Pa   Alice was beginning to get very tired of sitting by her sister
+Ra
+Pa on the bank, and of having nothing to do:  once or twice she had
+Ra
+Pa peeped into the book her sister was reading, but it had no
+Ra
+Ra
+Ra
+Ia
+Da
+
+END

@@ -1,0 +1,37 @@
+#!/bin/bash
+# Hybrid: Robustness when addD() / pushdD() fails unexpectedly
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+FILE=$TESTS/f055
+
+XDEQUE_N_ADDD=40 XDEQUE_N_PUSHD=40      \
+  /usr/bin/valgrind -q                  \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR
+					 
+XDEQUE_N_ADDD=80 XDEQUE_N_PUSHD=80      \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR
+					 
+XDEQUE_N_ADDD=120 XDEQUE_N_PUSHD=120     \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR
+					 
+XDEQUE_N_ADDD=160 XDEQUE_N_PUSHD=160     \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR
+					 
+XDEQUE_N_ADDD=200 XDEQUE_N_PUSHD=200     \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR
+					 
+XDEQUE_N_ADDD=240 XDEQUE_N_PUSHD=240     \
+  ./QsortH $FILE                      2>$STDERR
+wc -l < $STDERR

@@ -1,0 +1,4 @@
+# INITIAL = aaaa-bbbb; GOAL = bbbb-aaaa
+
+./Nine20 20 aaaa-bbbb bbbb-aaaa | wc -l
+

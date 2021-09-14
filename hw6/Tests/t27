@@ -1,0 +1,41 @@
+#!/bin/bash
+# Single wildcard (traditional)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+echo -----TOP-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 e_iproust
+
+echo -----LEFT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epi_roust
+
+echo -----RIGHT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epipr_ust
+
+echo -----BOTTOM-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epiprou_t
+
+
+echo -----CENTER-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epip_oust
+
+echo -----UPPER-LEFT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 _piproust
+
+echo -----UPPER-RIGHT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 ep_proust
+
+echo -----LOWER-LEFT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epipro_st
+
+echo -----LOWER-RIGHT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epiprous_

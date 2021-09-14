@@ -1,0 +1,18 @@
+#!/bin/bash
+# 8 x 1 board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 8 1 restates
+estate
+etats
+rest
+seta
+stare
+state
+tata
+tate
+tats
+tete
+END

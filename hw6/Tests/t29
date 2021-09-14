@@ -1,0 +1,28 @@
+#!/bin/bash
+# -c flag: All Boggle words in dictionary
+#          Some Boggle words include letters not on board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+# All Boggle words in dictionary
+valgrind -q  <<END \
+  ./Boggle -c 3 3 epiproust
+pepper
+repertoire
+report
+superior
+tripos
+END
+
+echo -----
+
+# Some Boggle words include letters not on board
+valgrind -q  <<END \
+  ./Boggle -c 3 3 epiproust
+pepper
+repertoire
+report
+superior
+tripods
+tripos
+END

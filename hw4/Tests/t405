@@ -1,0 +1,42 @@
+#!/bin/bash
+# More than 2 stacks or 1 queue in use at any one time?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+SLIMIT=2
+QLIMIT=1
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+########################
+# Verify that QsortH can sort quickly and correctly
+./QsortH $FILE                  2>$STDERR  >$STDOUT
+				  
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "WARNING: QsortH failed to sort $FILE.  Thus it will fail"
+  echo "this test even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Limit number of stacks or queues in use at one time
+XDEQUE_N_STACK=$SLIMIT           \
+XDEQUE_N_QUEUE=$QLIMIT           \
+XDEQUE_DIE=                      \
+LD_PRELOAD=$TESTS/libxBarrier.so \
+ ./QsortH $FILE                 2>$STDERR  >$STDOUT
+				  
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "Qsort requires more than $SLIMIT stacks or $QLIMIT queues at one time."
+  echo ----- ; cat $STDERR ; echo -----
+fi

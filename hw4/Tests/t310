@@ -1,0 +1,24 @@
+#!/bin/bash
+# Hybrid: Robustness when destroyD() fails unexpectedly
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+FILE=$TESTS/f055
+
+# createD() fails on first deque
+XDEQUE_N_DESTROYD=0               \
+  /usr/bin/valgrind -q            \
+  ./QsortH $FILE   > /dev/null  2>$STDERR
+wc -l < $STDERR
+
+# createD() fails on second deque
+XDEQUE_N_DESTROYD=1               \
+  /usr/bin/valgrind -q            \
+  ./QsortH $FILE   > /dev/null  2>$STDERR
+wc -l < $STDERR

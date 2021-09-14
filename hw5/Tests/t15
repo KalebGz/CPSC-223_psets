@@ -1,0 +1,8 @@
+# Reachability
+# 2 x 3 problem with no solution in 10 moves
+
+valgrind -q --leak-check=yes ./Nine20 2 3 10 12345- -54321
+
+echo
+
+valgrind -q --leak-check=yes ./Nine20 2 3 20 12345- -54321 | wc -l

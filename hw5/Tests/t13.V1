@@ -1,0 +1,31 @@
+#!/bin/bash
+# Limit available space
+
+# Limit available space when hash table and deque are very small
+TRAYS=7279
+LIMIT=$(($TRAYS * 100))
+
+# ./Nine20 50 3562481-7 12345678- | wc -l
+# HEAP=`/c/cs223/bin/maxHeap ./Nine20 50 3562481-7 12345678- 2>&1 >/dev/null`
+# if (test $HEAP -gt $LIMIT -o -v DEBUG_SCRIPT) then
+#   echo "Nine20 uses $HEAP bytes > $LIMIT = 100 * $NSTATES positions in table"
+# fi
+#
+# echo
+
+./Nine20 50 12345678- 3562481-7 | wc -l
+HEAP=`/c/cs223/bin/maxHeap ./Nine20 50 12345678- 3562481-7 2>&1 >/dev/null`
+if (test $HEAP -gt $LIMIT -o -v DEBUG_SCRIPT) then
+  echo "Nine20 uses $HEAP bytes > $LIMIT = 100 * $NSTATES positions in table"
+fi
+
+echo -----
+
+# Limit available space when hash table and deque are very large (no solution)
+TRAYS=181440
+LIMIT=$(($TRAYS * 100))
+
+HEAP=`/c/cs223/bin/maxHeap ./Nine20 50 12345678- 12345687- 2>&1`
+if (test $HEAP -gt $LIMIT -o -v DEBUG_SCRIPT) then
+  echo "Nine20 uses $HEAP bytes > $LIMIT = 100 * $NSTATES positions in table"
+fi

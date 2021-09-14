@@ -1,0 +1,55 @@
+#!/bin/bash
+# Ignore input lines with nonalphabetic characters
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q <<\END \
+  ./Boggle 3 3 epiproust
+peeper
+proust
+repertoire
+superior
+ pepper
+p!eppers
+pe"ppers
+pep#pers
+pepp$ers
+peppe%rs
+pepper&s
+peppers'
+(peppers
+p)eppers
+pe*ppers
+pep+pers
+pepp,ers
+peppe-rs
+pepper.s
+peppers/
+0peppers
+p1eppers
+pe2ppers
+pep3pers
+pepp4ers
+peppe5rs
+pepper6s
+peppers7
+8peppers
+p9eppers
+pe:ppers
+pep;pers
+pepp<ers
+peppe=rs
+pepper>s
+peppers?
+@peppers
+p[eppers
+pe\ppers
+pep]pers
+pepp^ers
+peppe_rs
+pepper`s
+peppers{
+|peppers
+p}eppers
+pe~ppers
+END

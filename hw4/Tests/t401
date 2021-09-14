@@ -1,0 +1,104 @@
+#!/bin/bash
+# Use of arrays?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+SIZE=`wc -l < $FILE`
+MAXALLOC=8192                                   # getline() requires 8192 bytes
+MAXSTACK=65536
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+########################
+# Verify that Qsort can sort quickly and correctly
+./Qsort $FILE                   2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "WARNING: Qsort failed to sort $FILE.  Thus it will fail"
+  echo "this test even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Global or Static Local?
+#   Does Qsort contain a global or static local array of size > 16 bytes?
+
+$TESTS/xArray.pl -G 16 -S 16 \
+  ./Qsort                       2>$STDERR
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT)  then
+  echo "Qsort contains a global or static local array of size > 16 bytes."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Automatic?
+#   Does Qsort use a stack with more than MAXSTACK bytes?  (Also tests
+#   using recursion to simulate an array.)
+
+$TESTS/maxStack \
+ ./Qsort $FILE                  2>$STDERR  >$STDOUT
+
+# If maxStack faulted, try again
+ERROR=`grep maxStack $STDERR | wc -c`
+if (test $ERROR -ne 0) then
+  $TESTS/maxStack \
+   ./Qsort $FILE                2>$STDERR  >$STDOUT
+fi
+
+sort -c $STDOUT
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+# Verify that $STDERR contains one word
+CHECK=`wc -w < $STDERR`
+
+if (test $CHECK -ne 1  -o -v DEBUG_SCRIPT) then
+  echo "maxStack failed or Qsort did not sort."
+  echo ----- ; cat $STDERR ; echo -----
+  exit
+fi
+
+USED=`cat $STDERR`
+if (test $USED -gt $MAXSTACK -o -v DEBUG_SCRIPT) then
+  echo "Qsort uses stack segment with more than $MAXSTACK bytes."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Allocated?
+#   Does Qsort allocate a block from the heap of size > MAXALLOC bytes
+
+LD_PRELOAD=$TESTS/libhMalloc.so \
+HMALLOC_MAX_ALLOC=$MAXALLOC     \
+ ./Qsort $FILE                  2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "Qsort allocates a block from the heap of size > $MAXALLOC bytes."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Using file as?
+#   Does Qsort open any files for writing?
+
+strace ./Qsort $FILE            2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+egrep "open.*(WRONLY|RDWR)" $STDERR        >$STDOUT
+
+if (test -s $STDOUT -o -v DEBUG_SCRIPT) then
+  echo "Qsort opens a file for writing."
+  echo ----- ; cat $STDOUT ; echo -----
+fi

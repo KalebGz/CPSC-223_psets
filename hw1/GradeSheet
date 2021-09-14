@@ -1,0 +1,264 @@
+NAME: gezahegn.kaleb.kzg2
+Homework #1
+
+
+Final test script for Cxref (02/07/20)
+
+***** Checking for warning messages *****
+Making ./Cxref
+gcc -g3 -std=c99 -pedantic -Wall   -c -o Cxref.o Cxref.c
+gcc -g3 -std=c99 -pedantic -Wall Cxref.o -o Cxref
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type the command:
+     ./Cxref < /c/cs223/Hwk1/Tests/tIJ.c
+The answer expected is in /c/cs223/Hwk1/Tests/tIJ.X.
+
+
+               Generic
+   1 point   01. Code, string, & char constant; no comments
+
+               ANSI Comments
+   1 point   02. Simple comments
+   1 point   03. Unterminated comment (graceful)
+   1 point   04. Comments nest, not!
+   1 point   05. String or char constant within comment, not!
+
+               Strings and char constants
+   1 point   06. Single quote in string
+   1 point   07. Escaped double quote is string
+   1 point   08. Adjacent strings
+   1 point   09. Comment followed/preceded by string
+
+               Line splices
+   1 point   10. Simple
+   1 point   11. Within start-comment
+   1 point   12. Sequence of splices I
+
+               Stress
+   1 point   13. Preprocessor directives (graceful)
+
+End of Public Script
+
+
+               Cxref
+   1 point   14. Alphanumeric identifiers
+
+               ANSI & C++ Comments
+   1 point   15. Escaped * and / end comment, not!
+   1 point   16. Adjacent and "overlapping" comments
+   1 point   17. / or * precedes begin-comment
+   1 point   18. / or * precedes end-comment
+   1 point   19. /* and */ cannot overlap
+   1 point   20. */ and /* cannot overlap
+
+               Strings and Char Constants
+   1 point   21. Escaped escape is string
+   1 point   22. Escaped characters in string
+   1 point   23. "Comment" within string
+   1 point   24. Empty string
+   1 point   25. Unterminated string (graceful)
+8a9
+> x:4
+Error: STDOUT differs from expected
+   0 point   26. / precedes/follows single quote
+   1 point   27. Variations on char constants
+   1 point   28. Unterminated char constant (graceful)
+
+               Line Splices
+5,6d4
+< char:4
+< barnacle:4
+Error: STDOUT differs from expected
+   0 point   29. Within end-comment
+5,7d4
+< aardvark:3
+< int:4
+< grosbeak:4
+Error: STDOUT differs from expected
+   0 point  30a. Within escaped matching quote in string  [0.3]
+5,7d4
+< cardinal:3
+< int:4
+< grosbeak:4
+Error: STDOUT differs from expected
+   0 point  30b. Within escaped escape in string  [0.3]
+ 0.4 point  30c. Within other escaped character in string  [0.4]
+5,7d4
+< barnacle:3
+< int:4
+< grosbeak:4
+Error: STDOUT differs from expected
+   0 point  31a. Within escaped matching quote in char constant  [0.3]
+5,7d4
+< cardinal:3
+< int:4
+< grosbeak:4
+Error: STDOUT differs from expected
+   0 point  31b. Within escaped escape in char constant  [0.3]
+5c5,8
+< aardvark:3
+---
+> aardvark:2
+> char:3
+> cn:3
+> devilray:3
+7,16c10,16
+< cn:4
+< devilray:5
+< char:6
+< co:6
+< elephant:7
+< char:8
+< ch:8
+< flamingo:9
+Error: STDOUT differs from expected
+   0 point  31c. Within other escaped character in char constant  [0.4]
+   1 point   32. Sequence within start/end-comment
+5,12d4
+< aardvark:5
+< int:6
+< grosbeak:6
+< char:8
+< csq:8
+< Barnacle:11
+< int:12
+< Grosbeak:12
+Error: STDOUT differs from expected
+   0 point  33a. Sequence in escaped matching quote  [0.3]
+5,10c5
+< cardinal:5
+< int:6
+< grosbeak:6
+< char:8
+< ce:8
+< Cardinal:11
+---
+> red:11
+Error: STDOUT differs from expected
+   0 point  33b. Sequence in escaped escape  [0.3]
+19,30c19,30
+< Aardvark:23
+< char:24
+< cn:24
+< Devilray:27
+< char:28
+< co:28
+< Elephant:31
+< char:32
+< ch:32
+< Flamingo:35
+< int:36
+< Grosbeak:36
+---
+> Aardvark:22
+> char:23
+Error: STDOUT differs from expected
+   0 point  33c. Sequence in other escaped character  [0.4]
+   1 point   34. Nest, not!
+   1 point   35. In other unusual places
+
+               Cxref
+   1 point   36. Alphabetic+underscore identifiers
+   1 point   37. Surrounding multiline comment
+   1 point   38. Line splice within hexadecimal constant
+
+               Stress Tests
+   1 point   39. Very long
+   1 point   40. What else can precede/follow /
+
+ 35.4 points  Total for Cxref
+
+               Non-Credit Tests
+   1 point   41. Proper use of ungetchar()?
+
+               Possible Deductions (assessed later as appropriate) 
+ -5 point       Does not make
+ -1 point       Makefile missing
+ -1 point       Makefile incorrect
+ -1 point       Log file incorrectly named
+ -1 point       Log file lacks estimated time
+ -1 point       Log file lacks total time
+ -1 point       Log file lacks statement of major difficulties
+ -1 point       Compilation errors using -Wall -std=c99 -pedantic
+
+
+***** Checking makefile *****
+
+***** Checking RCS files *****
+Working file: Cxref.c
+revision 1.17	date: 2020-02-01 01:11:39-05;  lines: 256 (+23 -25)
+revision 1.16	date: 2020-02-01 00:09:13-05;  lines: 258 (+25 -18)
+revision 1.15	date: 2020-01-31 21:01:08-05;  lines: 251 (+64 -12)
+revision 1.14	date: 2020-01-31 19:58:39-05;  lines: 199 (+21 -15)
+revision 1.13	date: 2020-01-31 17:32:07-05;  lines: 193 (+30 -5)
+revision 1.12	date: 2020-01-31 16:19:38-05;  lines: 168 (+69 -130)
+revision 1.11	date: 2020-01-31 14:46:16-05;  lines: 229 (+109 -34)
+revision 1.9	date: 2020-01-31 13:41:18-05;  lines: 152 (+28 -19)
+revision 1.7	date: 2020-01-29 22:20:37-05;  lines: 143 (+17 -6)
+revision 1.6	date: 2020-01-29 21:11:51-05;  lines: 132 (+31 -15)
+revision 1.5	date: 2020-01-29 20:35:30-05;  lines: 116 (+108 -34)
+revision 1.4	date: 2020-01-29 01:55:45-05;  lines: 42 (+11 -45)
+revision 1.3	date: 2020-01-29 00:32:59-05;  lines: 76 (+7 -4)
+revision 1.2	date: 2020-01-29 00:32:51-05;  lines: 73 (+40 -14)
+revision 1.1	date: 2020-01-28 21:22:05-05;  lines: 47
+
+***** Checking log file *****
+Estimate: 3:00  ESTIMATE time spent reading/researching
+Total: 14:00  TOTAL time spent
+
+==> time.log <==
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        3:00  ESTIMATE time spent reading/researching
+	  Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    1/26  08:00pm  1:00  Read assignment and figured out how to interact with the zoo + SFTP
+    1/28  12:00pm  0:45  Remotely set up the zoo on vscode and read more of my assignment
+    1/28  07:00pm  0:45  Figuring out how std in works and writting pseudocode
+    1/28  11:00pm  0:45  I have just been trying to draft out what the structure of my code is supposed to look like
+                            but i keep confusing myself. Going to sleep and see if it makes sense in the morning
+    1/29  07:00pm  1:00  At office hours and it is finally starting to make sense. I have already passed the first test using a functional
+                            finite state machine. I realized that I didn't have to think about all the cases at one time but am supposed to
+                            go and improve the code as I see the test errors.
+    1/29  08:00pm  1:00  Passed a couple more test cases(I think 4 now). I am going to run the test script now to see which ones i failed and why
+    1/29  09:00pm  1:00  Passed all the test cases up to line splices (the first 9 I think). I also did some research about what line splices are and how to approach them
+                            so i think i know what I need to do.
+    1/30  12:45pm  0:45  I started trying to figure out line splicing but changing the code for splicing inside a comment has made me fail a bunch of
+                            tests. I think i need to change my functional state structure and store the states in variables to avoid having to handle line splicing multiple times
+	1/30  01:45pm  1:00  Diagnosed why I was failing line splicing and started rededsigining my code to deal with line splices in one place
+    1/30  03:00pm  1:00  I have reformatted the code and I am passing 11 tests again. I am back to the issue of line splicing though and
+                            have been stuck on public test 12.
+    1/30  04:00pm  1:00  I got my line splice bug fixed but I am still running into the problem where I don't have leave state 5(backslash detected state)
+                            so i have a problem with the file not registering identifiers because it expects a comment. I also need to deal with numeric constants
+	1/30  06:30pm  1:00  I was finally able to find all of my public test cases. I also made progress on how to leave the 5th state
+                            I have also started testing random c code online to see how my code responds to it vs. how the staff solution responds to it
+    1/30  07:45pm  1:00  I have been working on testing more and more edge cases but haven't been very succesful. I figured out how to leave state 5 though.
+    1/30  11:00pm  1:00  I started passing a lot more test cases. I realized little quirks in the staff solution like underscores are considered an identifier so I should be taking a lot closer
+                            look at stuff like that.
+    1/30  12:00pm  1:00  I fixed an issue where an underscore would still be used as a break within identifiers. I am also reformating the format of the log file and
+                            my source code so that it meets the formatting requirments.
+       ----
+		   14:00  TOTAL time spent
+
+    I discussed my solution with:
+    Wednesday, February 19th
+    I asked Daniel Hodeta questions about c cyntax because I couldn't find how i was supposed to deal with quotes/strings and
+        preprocessing directives. He just told me to search up escape characters and that how the characters. He also explained to me what ungetchar did
+        but we didn't discuss solutions.
+    Difficulties
+    - Navigating the zoo is really difficult using the terminal. I have created a new file to keep track of the directories but
+        I think i need a more powerful IDE to handle multitasking. I will go through the VS code remote setup steps that one of the TA's
+        posted on the mailing list and hope that it works.
+    - I am having a really hard time with the C cyntax. I keep trying to have escape characters for recognizing
+        quotes and proceeding to a function but it keeps highlighting the wrong thing. I am also having a hard time
+        organizing my thoughts and making a coherent structure to my code.
+    - My functional state design made dealing with line splices really difficult because i had to deal with line splices with each cases and it wasn't central. I
+        had to revert to reformatting my code to just the main function to allow myself to generally deal with line splices at the top.
+    - I don't know if line splicing with functions is a good idea because i need a condition for it whenever I am inside the states. i don't have too many states
+        though so I might be fine if i have it check in main and in all of the states as well.
+

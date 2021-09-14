@@ -1,0 +1,6 @@
+# Compute parity of nonempty sequences of binary digits (Rn)
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Rn  0 11  111 1  11 EVEN  1 ODD  <<END
+0 1 00 01 10 11 000 001 010 011 100 101 110 111
+END

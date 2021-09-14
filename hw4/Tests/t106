@@ -1,0 +1,27 @@
+#!/bin/bash
+# -POS[,LEN]: LEN specified
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+# POS > 0, LEN > 0
+/usr/bin/valgrind -q \
+  ./Qsort -26,5  $TESTS/f003
+					 
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort -13,10 $TESTS/f003
+
+echo =====
+
+# POS = 0, LEN > 0
+/usr/bin/valgrind -q \
+  ./Qsort -0,15  $TESTS/f003
+
+echo -----
+
+# No -POS,LEN
+/usr/bin/valgrind -q \
+  ./Qsort        $TESTS/f003

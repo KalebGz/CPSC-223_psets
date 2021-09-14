@@ -1,0 +1,20 @@
+#!/bin/bash
+# Wildcard in corner with /c/cs223/Doc/words (9-letter words)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+echo -----UPPER-LEFT-----
+valgrind -q       <$TESTS/dict04 \
+  ./Boggle 3 3 _piproust
+
+echo -----UPPER-RIGHT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 ep_proust
+
+echo -----LOWER-LEFT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epipro_st
+
+echo -----LOWER-RIGHT-----
+/c/cs223/bin/run  <$TESTS/dict04 \
+  ./Boggle 3 3 epiprous_

@@ -1,0 +1,213 @@
+NAME: gezahegn.kaleb.kzg2
+Homework #2
+
+
+Final test script for Binpack (02/22/19)
+
+***** Checking for warning messages *****
+Making ./Binpack
+gcc -g3 -std=c99 -pedantic -Wall   -c -o Binpack.o Binpack.c
+gcc -g3 -std=c99 -pedantic -Wall Binpack.o -o Binpack
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type the command:
+     /c/cs223/Hwk2/Tests/tIJ
+The answer expected is in /c/cs223/Hwk2/Tests/tIJ.B.
+
+
+               Heuristics
+  1 point   01. -ff
+  1 point   02. -ffd
+  1 point   03. -bf
+  1 point   04. -bfd
+
+               Backtracking
+  1 point   05. Simple backtracking (< 200 backtracks)
+  1 point   06. Simple backtracking (< 2000 backtracks)
+  1 point   07. Presort item sizes (A required, AB or AC sufficient)
+  1 point   08. Backtracking quits at lower bound (B required and sufficient)
+  1 point   09. Backtracking quits at no better (C required and sufficient)
+  1 point   10. Must use Heuristic D (D required and ACD sufficient)
+  1 point   11. Must use Heuristic E (ACE required and sufficient)
+
+               Stress Tests
+  1 point   12. Invalid bin or item sizes
+  1 point   13. Extreme #items
+
+End of Public Script
+
+
+               Heuristics
+  1 point   14. First fit decreasing vs. first fit
+  1 point   15. First fit vs. best fit I
+  1 point   16. First fit vs. best fit II
+  1 point   17. Best fit vs. best fit decreasing I
+  1 point   18. Best fit vs. best fit decreasing II
+
+               Backtracking
+  1 point   19. 9 -opt (no items)
+  1 point   20. bfd < bf < ff < ffd < bfd
+  1 point   21. N(ff)/N(opt) = 10/6 (no backtracking with very little)
+  1 point   22. N(ff)/N(opt) = 17/10 (no backtracking with AB or AC)
+  1 point   23. Heuristics A & B necessary and sufficient
+  1 point   24. Heuristic A necessary; A & B or A & C sufficient
+  1 point   25. Heuristic B necessary and sufficient
+  1 point   26. Heuristic B necessary and sufficient
+  1 point   27. Heuristic C necessary and sufficient
+  1 point   28. Heuristic C necessary and sufficient
+  1 point   29. Heuristic D necessary and sufficient
+  1 point   30. Heuristic D necessary and almost sufficient [C helps]
+  1 point   31. Heuristics E necessary and sufficient
+  1 point   32. Heuristics C & E necessary and sufficient
+  1 point   33. Heuristics D or E necessary and sufficient
+  1 point   34. Heuristics C, D, & E necessary and sufficient
+
+               Stress Tests
+  1 point   35. No BIN_SIZE
+3c3
+< 1
+---
+> 4
+Error: STDOUT differs from expected
+  0 point   36. ITEM-SIZE > BIN-SIZE
+3c3
+< 1
+---
+> 4
+Error: STDOUT differs from expected
+  0 point   37. BIN_SIZE = 0
+  1 point   38. ITEM_SIZE = 0
+  1 point   39. Extreme #flags
+  1 point   40. Invalid flag
+
+ 38 points Total for Binpack
+
+               Valgrind (no extra credit)
+  1 point   41. Reprise of Tests #01, #02, #03, and #04
+==2497== Conditional jump or move depends on uninitialised value(s)
+==2497==    at 0x401CB3: bp (Binpack.c:235)
+==2497==    by 0x401531: main (Binpack.c:98)
+==2497== 
+==2497== Conditional jump or move depends on uninitialised value(s)
+==2497==    at 0x401CB3: bp (Binpack.c:235)
+==2497==    by 0x401E10: bp (Binpack.c:276)
+==2497==    by 0x401531: main (Binpack.c:98)
+==2497== 
+==2497== Conditional jump or move depends on uninitialised value(s)
+Error: STDERR should be empty
+  0 point   42. Reprise of Test #05 and #06
+
+               Corrected versions of #05 and #06 (no extra credit)
+  1 point  05n. Simple backtracking (< 200 backtracks)
+  1 point  06n. Simple backtracking (< 2000 backtracks)
+
+           Possible Deductions (assessed later as appropriate)
+                -5 Does not make
+                -1 Makefile missing
+                -1 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+                -1 Compilation errors using -Wall -std=c99 -pedantic
+
+
+#late days = 1
+
+Days of submission:
+drwxrws--- 2 kzg2 cs223ta  4096 Feb 15 01:32 RCS
+-rw-r----- 1 kzg2 cs223ta 11171 Feb 15 01:32 Binpack.c
+-rw-r----- 1 kzg2 cs223ta   187 Feb 15 01:32 Makefile
+-rw-r----- 1 kzg2 cs223ta  7315 Feb 15 01:32 time.log
+
+***** Checking makefile *****
+
+***** Checking RCS files *****
+Working file: Binpack.c
+revision 1.23	date: 2020-02-15 01:32:21-05;  lines: 424 (+33 -26)
+revision 1.20	date: 2020-02-14 16:31:05-05;  lines: 417 (+82 -118)
+revision 1.19	date: 2020-02-14 14:02:00-05;  lines: 453 (+92 -66)
+revision 1.14	date: 2020-02-13 23:53:30-05;  lines: 427 (+93 -17)
+revision 1.13	date: 2020-02-13 22:03:30-05;  lines: 351 (+70 -26)
+revision 1.12	date: 2020-02-13 16:13:06-05;  lines: 307 (+39 -19)
+revision 1.11	date: 2020-02-13 13:06:34-05;  lines: 287 (+28 -19)
+revision 1.10	date: 2020-02-13 01:12:33-05;  lines: 278 (+45 -9)
+revision 1.9	date: 2020-02-12 17:56:44-05;  lines: 242 (+22 -11)
+revision 1.8	date: 2020-02-11 17:23:09-05;  lines: 231 (+30 -3)
+revision 1.7	date: 2020-02-11 17:06:51-05;  lines: 204 (+46 -37)
+revision 1.6	date: 2020-02-11 15:24:26-05;  lines: 195 (+95 -29)
+revision 1.5	date: 2020-02-10 23:35:41-05;  lines: 129 (+83 -33)
+revision 1.3	date: 2020-02-10 20:56:56-05;  lines: 79 (+38 -22)
+revision 1.2	date: 2020-02-09 21:00:42-05;  lines: 63 (+53 -7)
+revision 1.1	date: 2020-02-08 17:47:34-05;  lines: 17
+
+***** Checking log file *****
+Estimate: 22:00  ESTIMATE time
+Total: 20:00  TOTAL time spent
+
+==> time.log <==
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        22:00  ESTIMATE time
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    2/08  04:45pm  1:00  I was mostly trying to figure out how to use command line arguments and fo
+                                typer conversions
+    2/09  07:30pm  1:00  I spent most of the time trying to figure out why I kept getting the Segmentation fault (core dumped)
+                                and was able to figure it out using Valgrind after one of the ULA's suggested it to me in office hours
+                                I am currently working on dealing with the command line arguments
+    2/09  08:30pm  0:30  I spent most of the time trying to figure out how to get the string command line inputs but I have a bug with
+                                my implementation of strcmp that i need to fix
+    2/10  08:00pm  1:00  I figured out how to fix all of my segmentation errors and process command line inputs but most of the time was
+                                was spent trying to figure out what the homework guidelines are asking for and what pointer notation is
+    2/10  10:33pm  1:00  I think I understand exactly what the program specifications mean so I am finally stating to actually code and am
+                                working on implementing my first fit algorithm. I still have a lot of errors though
+    2/11  11:50pm  1:00  I finally got first first to work and reformated my items structure so that the inital array that holds the items
+                                doesn't have any empty values.
+    2/11  02:23pm  1:00  I have been trying to get insertion sort to work but I have this bug that i can't seem to figure out
+    2/11  03:55pm  1:00  I figured out my bug for insertion sort. I realized that I was overhtinking it and not shifiting the arrays down. I also
+                                realized that I was shifting it in increasing order and fixed it. That was just reversing some equality operations though.
+    2/11  05:00pm  0:20  I outlined the genreal structure for bestfit. It is currently not working prolly becasue of some bad assignment but
+                                that shouldn't be too hard to fix if I trace the program
+    2/12  05:00pm  0:40  I fixed best fit. Turns out it was just a bad index assignment. I set binIdx to minIdx which was 0 which put me in an infinite loop
+                                I fixed that and ran the public test for the first time and realised i am only passing 3 tests and that my ffd algorithm and others aren't working.
+    2/13  12:02am  0:45  I created the intial outline for the -opt flag. I pretty much translated the pseudocode on the assignment specifications but it looks like I have a
+                                segmentation error. I used Valgrind and it says that the issue is i am going out of bounds and i think i fixed that but it is now saying that
+                                it can't grow the stack which i haven't encoutnered before
+    2/13  12:15pm  0:45  I fixed my bug with the general recursive model for backtracking. I realized that I wasn't checking if the bins were overflowing and I was also calculating the
+                                number of non-empty boxes from the items array and not the bins array. I haven't properly tested the problem because the sample respones take too long but I
+                                think most of the base logic is right. I also don't have an additional empty bin as suggested by the pseudocode so I have to figure out what that means. Nvm
+                                I did one more test and it said 1 for ./Binpack 100 31 41 59 26 52 -opt-opt 1 which shouldn't be possible
+    2/11  03:00pm  1:00  I figured out the major bug in my code which was that I wasn't adding the items into the preexisting bin but rather replacing them. I reformated my for loop to look
+                                like the pseudo code as well but idk what i'm doing wrong. I'm pretty sure my problem is that i am not handling the incomplete leafs properly but i don't know how
+                                to fix it
+    2/11  06:00pm  1:00  I am just struggling with trying to figure out what is going wrong with the recursion function
+    2/11  07:00pm  1:00  I was using c++ and c-- to change the paramater of the indexes which was not what i was supposed to do, I was just supposed to change the cIdx
+                                value for the parameter so I just needed to use c+1
+    2/11  07:00pm  1:00  I am passing 7 tests now and so i just need to figure out where i should put my B and C heuristsics
+    2/11  08:00pm  1:00  I am still trying to figure out what is going wrong with my B and C herusitics, I am starting to draw out simple solutions that rely on these heuristics so
+                                that i can make debugging easier for myself.
+    2/11  09:00pm  1:00  Mostly trying to figure out my Heuristic b is not working
+    2/11  10:00pm  1:00  I got Huristics A to D to work by implementation for heuristic E is causing D to fail
+    2/12  11:00pm  1:00  I tried to figure out how to deal with erraneous input but it is trating every bin as incorrect input for some reason
+    2/13  01:00pm  1:00  I created a seperate funciton to deal with erraneous input because atoi interprets +11 and -11 and other erraneous inputs as their actual int conversion so I created
+                                another funciton that iterates through the string inputs and checks if each char is a digit. I also discovered a bug when testting public test 13 which is that my
+                                bf isn't printing for some reason for the inputs 1 1
+    2/13  03:00pm  1:00  I spent most of the time commenting my code and trying to trace my code for opt
+    2/13  04:00pm  1:00  I am starting to print when items are added and removed to try and figure out why my backtracking is so slow
+    2/13  11:52pm  1:00  I figured out how to use the built in vs code debugger and realized that my heuristic E wasn't resetting the toggle after the end of the bins and my for loop was also
+                                outside the bin assignment for loop which should not have happened.
+       ----
+                   20:00  TOTAL time spent
+
+    I discussed my solution with:
+
+    Difficulties:
+    The most difficult part of the entire program was undoubtdetely the opt backtracking function and that was simply because that was very hard to diagnose. I know that the pseudocde for the general function was
+    published but my biggest problem was that i didn't really undertstand why we had to put it into one empty bin at first because of the wording so i was placing the item into every possible bin. The list of permutations
+    did decrease signficantly once i only put items into one empty bin but it took a very long time for me to figure it out. My other big problem was obviously also the Heurisitics because I coldn't diagnose simple problems
+    without figuring out how to use gdb or the built in vs code debugger. This made it very difficult to diagnose especially when my Heurisitc E started messign with my tests for the other Heuristics.

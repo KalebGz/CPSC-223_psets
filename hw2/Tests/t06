@@ -1,0 +1,9 @@
+#!/bin/bash
+# Simple backtracking requires nothing (backtracks = 1562)
+
+echo 'Simple backtracking requires nothing'
+./Binpack 64 28 19 18 17 16 15 24 23 22 21 20 32 -bf -opt
+echo
+
+echo 'Simple backtracking requires nothing'
+./Binpack 50  9 19 22 22 24 14 25 15 -opt -bfd

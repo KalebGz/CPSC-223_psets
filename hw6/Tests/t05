@@ -1,0 +1,7 @@
+#!/bin/bash
+# Wildcard in interior with /c/cs223/Doc/words (9-letter words)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <$TESTS/dict04 \
+  ./Boggle 3 3 epip_oust

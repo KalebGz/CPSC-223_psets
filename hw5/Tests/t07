@@ -1,0 +1,5 @@
+# Short 2x2 problems
+
+valgrind -q  ./Nine20 2 2 10 ABC- -ACB ; /bin/echo
+valgrind -q  ./Nine20 2 2 10 ABC- BCA- ; /bin/echo
+valgrind -q  ./Nine20 2 2 10 ABC- C-BA

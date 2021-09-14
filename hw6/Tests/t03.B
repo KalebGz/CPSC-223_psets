@@ -1,0 +1,9 @@
+coco: 1
+compute: 1
+mimi: 1
+min: 1
+mini: 2
+minicomputer: 1
+minim: 1
+tete: 1
+tutu: 1

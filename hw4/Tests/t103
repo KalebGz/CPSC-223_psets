@@ -1,0 +1,15 @@
+#!/bin/bash
+# Nonexistent file (error)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f054 $TESTS/nonexistent/file $TESTS/f056 |& wc -l
+
+echo -----
+
+# Repeat Test #102
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f055

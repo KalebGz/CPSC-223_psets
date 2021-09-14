@@ -1,0 +1,15 @@
+#!/bin/bash
+# N(ff)/N(opt) = N(bf)/N(opt) = 17/10 (no backtracking with AB or AC)
+
+./Binpack 101 6 6 6 6 6 6 6 10 10 10 10 10 10 10 16 16 16 34 34 34 34 34 34 34 34 34 34 51 51 51 51 51 51 51 51 51 51 -ff
+echo ---
+
+./Binpack 101 6 6 6 6 6 6 6 10 10 10 10 10 10 10 16 16 16 34 34 34 34 34 34 34 34 34 34 51 51 51 51 51 51 51 51 51 51 -bf
+echo ---
+ 
+./Binpack 101 6 6 6 6 6 6 6 10 10 10 10 10 10 10 16 16 16 34 34 34 34 34 34 34 34 34 34 51 51 51 51 51 51 51 51 51 51 -opt
+ 
+# Requires AB or AC
+# Fail: -optBC -optBE ...
+# backtracks(-opt) = 0
+# -ff = -bf = 17 > 10 = -ffd = -bfd = -opt

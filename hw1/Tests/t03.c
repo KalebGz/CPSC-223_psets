@@ -1,0 +1,3 @@
+char *hdr = "Unterminated comment (graceful)";
+
+int aardvark;   /* An unterminated comment ...

@@ -1,0 +1,17 @@
+#!/bin/bash
+# Multiple wildcards with /c/cs223/Doc/words (9-letter words)
+
+echo -----CORNER + SIDE-----
+egrep '^[[:alpha:]]{11,13}$' /c/cs223/Doc/words |  \
+valgrind -q                                        \
+  ./Boggle 3 3 _pipr_ust
+
+echo -----CORNER + CENTER-----
+egrep '^[[:alpha:]]{13,17}$' /c/cs223/Doc/words |  \
+/c/cs223/bin/run                                   \
+  ./Boggle 3 3 _pip_oust
+
+echo -----SIDE + CENTER-----
+egrep '^[[:alpha:]]{17,19}$' /c/cs223/Doc/words |  \
+/c/cs223/bin/run                                   \
+  ./Boggle 3 3 e_ip_oust

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Long files or long lines
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+# Long files
+FILES="/c/cs223/Doc/warAndPeace /c/cs223/Doc/alice.1"
+./Qsort $FILES           2>$STDERR  >$STDOUT
+
+sort $FILES | diff - $STDOUT 2>>$STDERR >&2
+cat $STDERR
+
+
+# Long lines
+FILES="$TESTS/t115x"
+./Qsort $FILES           2>$STDERR  >$STDOUT
+
+sort $FILES | diff - $STDOUT 2>>$STDERR >&2
+cat $STDERR

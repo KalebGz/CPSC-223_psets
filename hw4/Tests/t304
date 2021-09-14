@@ -1,0 +1,24 @@
+#!/bin/bash
+# Hybrid: 1 file, 55 lines, unsorted (Test #301 with moving deques)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+FILE=$TESTS/f055
+
+XDEQUE_MOVE= /usr/bin/valgrind -q \
+  ./QsortH $FILE                2>$STDERR  >$STDOUT
+
+head -1 $STDOUT ; echo ----- ; cat $STDERR
+
+echo =====
+
+/usr/bin/valgrind -q \
+  ./QsortH $FILE                2>$STDERR  >$STDOUT
+
+sort $FILE | diff - $STDOUT       2>>$STDERR >&2

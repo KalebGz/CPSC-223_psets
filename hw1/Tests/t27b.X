@@ -1,0 +1,14 @@
+char:1
+hdr:1
+char:2
+cardinal:2
+devilray:2
+char:3
+elephant:3
+flamingo:3
+char:4
+grosbeak:4
+hedgehog:4
+char:5
+ironwood:5
+junipers:5

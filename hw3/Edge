@@ -1,0 +1,30 @@
+Edge
+
+
+Work on
+[kzg2@kangaroo Hwk3]$ echo dog | valgrind --leak-check=full ./strwrs +dog- cow 
+cow
+[kzg2@kangaroo Hwk3]$ echo dog | ./strwrs +dog- cow
+cow
+[kzg2@kangaroo Hwk3]$ echo +- | ./strwrs + -
+-+-
+[kzg2@kangaroo Hwk3]$ echo +- | ./strwrs /+/- -
+-
+[kzg2@kangaroo Hwk3]$ echo abab | ./strwrs -n  +a b 
+bbab
+[kzg2@kangaroo Hwk3]$ echo baba | ./strwrs -n  +a b
+baba
+[kzg2@kangaroo Hwk3]$ echo baba| ./strwrs -n  a- b
+babb
+[kzg2@kangaroo Hwk3]$ echo abab | ./strwrs -n  a- b 
+abab
+[kzg2@kangaroo Hwk3]$ echo ++++ | ./strwrs -n  /++ ab
+abab
+[kzg2@kangaroo Hwk3]$ echo ---- | ./strwrs -n  -/- ab
+abab
+[kzg2@kangaroo Hwk3]$ echo a/a/ | ./strwrs -n  /a/ bc
+bcbc
+
+
+Success
+

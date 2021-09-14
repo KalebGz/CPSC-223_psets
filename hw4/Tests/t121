@@ -1,0 +1,22 @@
+#!/bin/bash
+# Free all storage?: Medium length file
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILES="$TESTS/f1024 $TESTS/f055"
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+/c/cs223/bin/leak.pl \
+  ./Qsort $FILES
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $FILES >$STDOUT 2>$STDERR
+
+sort $FILES | diff - $STDOUT 2>>$STDERR >&2
+cat $STDERR

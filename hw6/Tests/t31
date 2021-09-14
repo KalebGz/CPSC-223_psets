@@ -1,0 +1,19 @@
+#!/bin/bash
+# Invalid flag (error)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+# Too few arguments
+valgrind -q  <$TESTS/dict09 \
+  ./Boggle -T 3 3 epiproust |& /usr/bin/wc -l
+
+echo -----
+
+valgrind -q  <$TESTS/dict09 \
+  ./Boggle -T 3 3           |& /usr/bin/wc -l
+
+echo -----
+
+# Repeat Test #01
+valgrind -q  <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

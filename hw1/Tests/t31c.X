@@ -1,0 +1,16 @@
+char:1
+hdr:1
+char:2
+cdq:2
+aardvark:3
+char:4
+cn:4
+devilray:5
+char:6
+co:6
+elephant:7
+char:8
+ch:8
+flamingo:9
+int:10
+grosbeak:10

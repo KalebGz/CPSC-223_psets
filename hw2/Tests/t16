@@ -1,0 +1,6 @@
+#!/bin/bash
+# First fit vs. best fit II
+
+/c/cs223/bin/run \
+  ./Binpack 24 16 16 16 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 4 4 \
+	    3 3 3 3 3 3 3 3 3 3 3 3 -bf -ff

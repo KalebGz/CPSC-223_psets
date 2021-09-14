@@ -1,0 +1,8 @@
+# Short 2x4 problems
+
+valgrind -q  ./Nine20 2 4 10 1234567- 1273564- ; echo
+valgrind -q  ./Nine20 2 4 10 1234567- 1247563- ; echo
+	     ./Nine20 2 4 10 1234567- 1624537- ; echo
+	     ./Nine20 2 4 10 1234567- 1364527- ; echo
+	     ./Nine20 2 4 10 1234567- 2534167- ; echo
+	     ./Nine20 2 4 10 1234567- 5134267-

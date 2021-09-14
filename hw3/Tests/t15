@@ -1,0 +1,6 @@
+# No arguments
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs <<END
+Design is the art of making choices.
+END

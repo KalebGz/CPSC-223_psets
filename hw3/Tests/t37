@@ -1,0 +1,6 @@
+# Reverse delimited strings of 0s and 1s
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Sr  x0 0x  y0 0y  y1 1y  x1 1x  yE E0  xE E1  B0 By  B1 Bx  BE R= <<END
+BE B0E B1E B00E B01E B10E B11E B000E B001E B010E B011E B100E B101E B110E B111E
+END

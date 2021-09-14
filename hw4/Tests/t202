@@ -1,0 +1,24 @@
+#!/bin/bash
+# Add to tail of deque; test whether empty
+
+XDEQUE_ANNOUNCE=  /usr/bin/valgrind -q ./testDeque << \END
+Ca
+Aa ##### ADD TO TAIL OF DEQUE #####
+Ha
+Ia
+Ra
+
+Aa              ALICE'S ADVENTURES IN WONDERLAND
+Aa                        Lewis Carroll
+Aa             THE MILLENNIUM FULCRUM EDITION 3.0
+Ra
+Aa                          CHAPTER I
+Aa                    Down the Rabbit-Hole
+Ra
+Ra
+Ra
+Ra
+Ia
+Da
+
+END

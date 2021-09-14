@@ -1,0 +1,13 @@
+#!/bin/bash
+# Mixed case in dictionary
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 3 3 epiproust
+pEEpEr
+pEppEr
+prOUst
+rEpErtOIrE
+sUpErIOr
+END

@@ -1,0 +1,34 @@
+#!/bin/bash
+# Use of global variables (but not arrays)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+########################
+# Verify that Qsort can sort quickly and correctly
+./Qsort $FILE                 2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "WARNING: Qsort failed to sort $FILE.  Thus it will fail"
+  echo "this test even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Global variables that are not arrays?
+
+$TESTS/xArray.pl -g 16 Qsort    2>$STDERR >$STDOUT
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "Qsort contains a global variable."
+  echo ----- ; cat $STDERR ; echo -----
+fi

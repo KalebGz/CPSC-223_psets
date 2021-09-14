@@ -1,0 +1,4 @@
+# 2x3 problem with no solution in 10 moves
+
+valgrind -q  ./Nine20 2 3 10 12345- -54321
+valgrind -q  ./Nine20 2 3 20 12345- -54321 | wc -l

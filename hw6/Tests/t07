@@ -1,0 +1,31 @@
+#!/bin/bash
+# Traditional on 4 x 2 board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle -t 4 2 epiprous
+isis
+opus
+peep
+pious
+pipe
+pius
+pope
+pore
+porous
+pour
+prep
+prior
+priori
+prop
+proper
+propos
+ripe
+rope
+sour
+super
+superior
+usurious
+usurp
+END

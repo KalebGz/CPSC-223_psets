@@ -1,0 +1,36 @@
+# More escapes
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs  -n a+b 'a(plus)b'  c-d 'c(minus)d'  e/f 'e(slash)f' <<END
+abab
+a-b-a-b
+cdcd
+c/d/c/d
+efef
+e+f+e+f
+END
+
+echo -----
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs  -n a/+b 'a(slash)(plus)b'  c/-d 'c(minus)d'  e//f 'e(slash)f' <<END
+a+b+a+b
+a/+b/+a/+b
+c-d-c-d
+c/-d/-c/-d
+e/f/e/f
+e//f//e//f
+END
+
+echo -----
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs  -n a//- 'a(slash)'  c///- 'c(slash)(minus)' <<END
+a/-b/-a/
+a/-b/-a/-
+a//-b//-a//-
+c/-d/-c//
+c/-d/-c/-
+c//-d//-d//-
+c///-d///-c///-
+END

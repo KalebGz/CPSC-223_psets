@@ -1,0 +1,117 @@
+#!/bin/bash
+# Files with 48 to 65 lines
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f048 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f049 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f050 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f051 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f052 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f053 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f054 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f055 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f056 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f057 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f058 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f059 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f060 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f061 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f062 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f063 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f064 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR
+echo =====
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f065 >$STDOUT 2>$STDERR
+
+wc <$STDOUT ; sort -c $STDOUT ; echo ----- ; cat $STDERR

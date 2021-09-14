@@ -1,0 +1,7 @@
+#!/bin/bash
+# Implementation of quickSort?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+$TESTS/xQuick.pl $TESTS/f1025U

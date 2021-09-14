@@ -1,0 +1,5 @@
+# aaabbb | ./strwrs -Sn  aa a  abb aab
+
+echo "aaabbb" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs -Sn  aa a  abb aab

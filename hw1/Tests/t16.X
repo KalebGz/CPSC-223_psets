@@ -1,0 +1,16 @@
+char:1
+hdr:1
+int:2
+abalone:2
+int:4
+barnacle:4
+int:6
+cuttlefish:6
+int:10
+elephant:10
+int:11
+flounder:11
+int:14
+grouper:14
+int:15
+haddock:15

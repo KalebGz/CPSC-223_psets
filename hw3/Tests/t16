@@ -1,0 +1,6 @@
+# Flags but no rules
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Qn  <<END
+A foolish consistency is the hobgoblin of little minds.
+END

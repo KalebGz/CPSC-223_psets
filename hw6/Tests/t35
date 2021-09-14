@@ -1,0 +1,28 @@
+#!/bin/bash
+# Duplicate words in dictionary
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 3 3 epiproust
+peeper
+pepper
+proust
+repertoire
+superior
+peeper
+pepper
+proust
+repertoire
+superior
+peeper
+pepper
+proust
+repertoire
+superior
+peeper
+pepper
+proust
+repertoire
+superior
+END

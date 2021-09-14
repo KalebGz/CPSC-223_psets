@@ -1,0 +1,226 @@
+NAME: gezahegn.kaleb.kzg2
+Homework #5
+
+
+Final test script for Nine20 (04/28/20)
+
+***** Checking for warning messages *****
+Making ./Nine20
+gcc -std=c99 -pedantic -Wall -g3   -c -o Nine20.o Nine20.c
+gcc -std=c99 -pedantic -Wall -g3   -c -o Hash.o Hash.c
+gcc -std=c99 -pedantic -Wall -g3 -o Nine20 Nine20.o /c/cs223/Hwk5/Deque.o Hash.o
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type the command:
+     /c/cs223/Hwk5/Tests/tIJ
+or the command
+     final.Nine20 IJ
+The answer expected is in /c/cs223/Hwk5/Tests/tIJ.N.
+
+
+               One-Move Problems
+  1 point   01. Single moves to center
+  1 point   02. Single moves to side
+  1 point   03. Single moves to corner
+
+               3x3 Problems
+  1 point   04. Very short 3x3 problems (< 7 moves)
+  1 point   05. Short 3x3 problems (< 16 moves)
+  1 point   06. 3x3 problem with no solution
+
+               HEIGHT x WIDTH Problems
+  1 point   07. Short 2x2 problems
+  1 point   08. 2x2 problem with no solution
+  1 point   09. 2x3 problem with no solution in 10 moves
+
+               Error Detection
+  1 point   10. Incompatible initial and goal (error)
+  1 point   11. Invalid MAXSTEPS (error)
+  1 point   12. INITIAL = GOAL with no blank square (error)
+
+               Stress
+  1 point   13. Limit space per hash table entry
+
+               Reachability
+  1 point   14. Reachability: Short 3 x 3 problems
+
+End of Public Script
+
+
+               Reachability
+  1 point   15. Reachability: 2 x 3 with no solution in 10 moves
+
+               3x3 Problems
+  1 point   16. Short problems (< 16 moves)
+  1 point   17. Medium problems (< 20 moves)
+  1 point   18. Long problems (< 25 moves)
+  1 point   19. Very long problems
+
+               HEIGHT x WIDTH Problems
+  1 point   20. Short 2x4 problems
+  1 point   21. 3x4 and 4x3 problems
+  1 point   22. 4x4 problem
+  1 point   23. Long 4x4 problems
+5c5
+< 32
+---
+> 0
+9,11d8
+< 46
+< =====
+< 0
+Error: STDOUT differs from expected
+  0 point   24. 2x5 and 5x2 problems
+
+               Error Detection
+  1 point   25. Invalid HEIGHT (error)
+  1 point   26. Invalid WIDTH (error)
+  1 point   27. INITIAL = GOAL with two blank squares (error)
+0a1,2
+> 1234-56789
+> 123-456789
+2c4
+< 1
+---
+> 0
+Error: STDOUT differs from expected
+  0 point   28. INITIAL = GOAL wrong length (error)
+  1 point   29. INITIAL & GOAL different lengths
+  1 point   30. INITIAL = aaaa-bbbb; GOAL = aaa-bbbbb (error)
+  1 point   31. INITIAL or GOAL with no blank square (error)
+/c/cs223/Hwk5/Tests/t32: line 17:  8377 Segmentation fault      (core dumped) valgrind -q ./Nine20 10 > $STDOUT 2> $STDERR
+/c/cs223/Hwk5/Tests/t32: line 24:  8388 Segmentation fault      (core dumped) valgrind -q ./Nine20 12345678- 1234567-8 > $STDOUT 2> $STDERR
+/c/cs223/Hwk5/Tests/t32: line 31:  8400 Segmentation fault      (core dumped) valgrind -q ./Nine20 10 12345678- > $STDOUT 2> $STDERR
+5c5
+< 1
+---
+> 15
+8c8
+< 1
+---
+Error: STDERR should be empty
+  0 point   32. Incorrect number of arguments (error)
+  1 point   33. Illegal option (error)
+
+               Stress
+==8453== Use of uninitialised value of size 8
+==8453==    at 0x40202E: putInChain (Hash.c:103)
+==8453==    by 0x401F3E: insertH (Hash.c:70)
+==8453==    by 0x40180A: main (Nine20.c:145)
+==8453== 
+==8453== Invalid read of size 8
+==8453==    at 0x40202E: putInChain (Hash.c:103)
+==8453==    by 0x401F3E: insertH (Hash.c:70)
+==8453==    by 0x40180A: main (Nine20.c:145)
+==8453==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+Error: STDERR should be empty
+  0 point   34. INITIAL = GOAL
+1d0
+< 1234-5678
+Error: STDOUT differs from expected
+  0 point   35. MAXSTEPS = 0, INITIAL = GOAL
+  1 point   36. Solution with exact number of moves
+  1 point   37. INITIAL = aaaa-bbbb; GOAL = bbbb-aaaa
+
+               Reachability
+  1 point   38. Reachability: Incompatible / invalid (error)
+
+               Other
+  1 point   39. Limit space per hash table entry (< 1000 positions)
+  1 point   40. 5x5 problem
+
+ 35 points Total for Nine20
+
+Applying 1 late days to reduce #days late from 7 to 6
+
+#late days = 6
+
+Days of submission:
+drwxrws--- 2 kzg2 cs223ta 4096 Apr 23 20:07 RCS
+-rw-r----- 1 kzg2 cs223ta 5537 Apr 23 20:07 Hash.c
+-rw-r----- 1 kzg2 cs223ta  633 Apr 23 20:07 Hash.h
+-rw-r----- 1 kzg2 cs223ta    1 Apr 23 20:07 LATENESS
+-rw-r----- 1 kzg2 cs223ta  438 Apr 23 20:07 Makefile
+-rw-r----- 1 kzg2 cs223ta 5569 Apr 23 20:07 Nine20.c
+-rw-r----- 1 kzg2 cs223ta 4904 Apr 23 20:07 time.log
+
+***** Checking makefile *****
+
+***** Checking RCS files *****
+Working file: LATENESS
+revision 1.1	date: 2020-04-23 19:36:32-04;  lines: 1
+Working file: Hash.c
+revision 1.21	date: 2020-04-23 20:02:12-04;  lines: 213 (+2 -3)
+revision 1.19	date: 2020-04-23 19:36:24-04;  lines: 214 (+13 -12)
+revision 1.18	date: 2020-04-23 04:06:02-04;  lines: 213 (+24 -19)
+revision 1.17	date: 2020-04-23 03:26:56-04;  lines: 208 (+45 -65)
+revision 1.16	date: 2020-04-22 21:22:02-04;  lines: 228 (+41 -35)
+revision 1.10	date: 2020-04-21 00:22:17-04;  lines: 227 (+16 -12)
+revision 1.9	date: 2020-04-20 21:51:10-04;  lines: 223 (+31 -24)
+revision 1.7	date: 2020-04-20 00:57:19-04;  lines: 212 (+21 -7)
+revision 1.6	date: 2020-04-19 03:05:51-04;  lines: 198 (+40 -24)
+revision 1.5	date: 2020-04-18 22:44:29-04;  lines: 182 (+66 -29)
+revision 1.4	date: 2020-04-18 20:40:23-04;  lines: 145 (+50 -20)
+revision 1.2	date: 2020-04-16 17:35:53-04;  lines: 115 (+27 -9)
+revision 1.1	date: 2020-04-16 14:05:45-04;  lines: 80
+Working file: Nine20.c
+revision 1.24	date: 2020-04-23 20:03:42-04;  lines: 224 (+1 -1)
+revision 1.20	date: 2020-04-23 04:06:02-04;  lines: 221 (+8 -22)
+revision 1.18	date: 2020-04-22 21:22:02-04;  lines: 235 (+85 -58)
+revision 1.17	date: 2020-04-22 15:59:30-04;  lines: 208 (+28 -8)
+revision 1.16	date: 2020-04-21 22:36:00-04;  lines: 188 (+84 -46)
+revision 1.15	date: 2020-04-21 19:32:29-04;  lines: 150 (+72 -30)
+revision 1.13	date: 2020-04-21 02:31:09-04;  lines: 102 (+68 -30)
+revision 1.12	date: 2020-04-21 00:22:17-04;  lines: 64 (+39 -11)
+revision 1.1	date: 2020-04-16 14:05:36-04;  lines: 30
+
+***** Checking log file *****
+Estimate: 02:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+Total: 18:15  TOTAL time spent
+
+==> time.log <==
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        02:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    04/16  12:52pm  1:00  Created the header file and starte on the base structure of the Hash table function
+    04/16  05:02pm  0:30  Tried to implement insertH and the grow function for dealing with when the load factor gets too bif
+    04/18  07:42pm  0:45  I started thinking about the chains for the collison and realized that i need to make a struct for the chains themseleves because
+                            I need to know their length whenever iterating through them and also think i have a plan for implementing insertH
+    04/18  09:30pm  1:00  I fixed the bugs in my Hash.c program after i implemented the function to insert an element to the hash function and made adjustments to
+                            have the triples sorted when inserted
+    04/18  10:30pm  0:30  finsihed implementing the growth hash function. started implementing the search function.
+    04/19  02:00am  1:00  created a test file for my Hash ADT but i keep running into the error "undefined reference to `createH'" error when trying to make it so implement implement i spent
+                            most of the time debugging that and reading up on makefiles
+    04/19  11:30pm  1:00  figured out that the error was coming from incorrectly naming my create function and then tried to fix my valgrind invalid write errors
+    04/20  12:40pm  0:15  was trying to debug the insertH function. I don't know how to copy over the contents of one pointer onto another. tried to use memcpy but its not working for some reason.
+    04/20  03:40pm  1:00  more depugging my putinChain method that tries to place a new triple into the array of triple pointers. Figured out I was making a malloc error but i still can't figure out how to do
+                            pointer array accessing without derefrencing
+    04/21  08:40pm  1:00  figured out that i was debugging my testFunction wrong but it's still not updating the pointer for some reason.
+    04/21  10:20pm  1:00  I think my hash implementation is all working now and i started working on flag parsing for Nine20
+    04/21  11:40pm  1:00  More work on flag parsing and started on the BFS algorithm
+    04/21  06:20pm  1:00  I created a macro for outputting an error message for flag parsing errors and also started reformating hash.c because I need to return a truple from searchH to get the nsteps and from pointer
+    04/21  08:20pm  1:00  Implemented most of the BFS Algorithm. Running into a bug because of the differences between a char** and char*[] and so looking into learn more about accessing pointers to the elements in a char* array
+    04/22  03:00pm  1:00  Implemented the printSeq function for printing the positions and am also debugging a scenerio where a previous position that's been inserted into the hash can't be found
+    04/22  05:00pm  1:00  removed the condition to check whether the key is less than the element being looked out in SearchH and properly implemented the printSequence function so i'm passing some tests but I'm still debugging why
+                            I needed to remove that condition. Also implemented searching for the item with the smallest steps in searchH but it isn't working for some reason.
+    04/22  08:10pm  1:00  reformatted table to be a double pointer which took a while and still tried to fix what i assume is a sorting error in my sort function
+    04/23  02:10am  1:00  implemted the insert function using realloc and tried to get rid of lost memory be strduping whenever the hash is expanded but nothing seems to work
+    04/23  03:50am  0:15  Cleaned up code and did a bit of debugging
+    04/23  04:50am  1:00  mostly debugging, reformatted grow so that the old hash pointer is updated
+    04/23  06:50am  1:00  I stopped freeing nprime because the old hash table was dependednt on it and that got rid of all my errors for some reason. brain is too fried to trace this right now
+
+    ----
+                    18:15  TOTAL time spent
+
+    I discussed my solution with:
+
+    Difficulties:
+  I thought that the reachability criteria was really difficult because i started to deal with it after i had implemented my entire program and I realied that my implementation of Hash.c itself
+  was causing problems and I couldn't figure out why my destory function wasn't working which was necessary for the deleting the old hash but it wasn't working for some reason. I just realized while writting this too
+  that i didn't have to recreate a new hash but i could have just realloc'ed it which would have save me some time. Testing hash.c was difficult because there were no public tests and i don't think my tests were sufficient

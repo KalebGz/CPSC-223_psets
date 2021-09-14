@@ -1,0 +1,21 @@
+# Combinations of Q with [q,n,r,s]
+
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | timeout -k 1 2 valgrind -q \
+  ./strwrs -Qq  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | timeout -k 1 2 valgrind -q \
+  ./strwrs -Qn  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | timeout -k 1 2 valgrind -q \
+  ./strwrs -Qr  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | timeout -k 1 2 valgrind -q \
+  ./strwrs -Qs  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+
+echo -----
+
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | \
+  ./strwrs -qQ  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | \
+  ./strwrs -nQ  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | \
+  ./strwrs -rQ  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX
+echo 112212/aaaa/AABBAB/xyxyxyx/XXYXYX | \
+  ./strwrs -sQ  12 231  3 4  caa d  aa aca  BC D  AB BCA  xyx zx  XYX YX

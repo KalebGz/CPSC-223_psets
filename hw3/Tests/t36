@@ -1,0 +1,24 @@
+# Infinite loop and storage leak
+
+/bin/echo aaa | /c/cs223/bin/leak.pl +stdout \
+       ./strwrs -Rn  a x  +x x  x y
+
+echo -----
+
+/bin/echo aaa | /c/cs223/bin/leak.pl +stdout \
+       ./strwrs -Rn  a +  /+ +  /+ y
+
+echo -----
+
+/bin/echo aaa | /c/cs223/bin/leak.pl +stdout \
+       ./strwrs -Rn  a x  x- x  x y
+
+echo -----
+
+/bin/echo aaa | /c/cs223/bin/leak.pl +stdout \
+       ./strwrs -Rn  a -  /- -  /- y
+
+echo -----
+
+/bin/echo aaa | /c/cs223/bin/leak.pl +stdout \
+       ./strwrs -Rn  a /  // /  // y

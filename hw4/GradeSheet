@@ -1,0 +1,356 @@
+NAME: gezahegn.kaleb.kzg2
+Homework #4
+
+
+Final test script for Qsort (04/07/19)
+
+***** Checking for warning messages *****
+Making ./Qsort ./testDeque ./QsortH
+gcc -std=c99 -pedantic -Wall -g3   -c -o Qsort.o Qsort.c
+gcc -std=c99 -pedantic -Wall -g3   -c -o Deque.o Deque.c
+gcc -std=c99 -pedantic -Wall -g3 -o Qsort Qsort.o Deque.o
+gcc -std=c99 -pedantic -Wall -g3 -o testDeque Deque.o /c/cs223/Hwk4/testDeque.o
+gcc -std=c99 -pedantic -Wall -g3 -o QsortH Qsort.o /c/cs223/Hwk4/Deque.o
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type the command:
+     /c/cs223/Hwk4/Tests/tIJ
+or the command
+     final.Qsort IJ
+The answer expected is in /c/cs223/Hwk4/Tests/tIJ.t.
+
+
+           Phase 1: Merge.o + Deque.o
+
+               Sorts correctly
+  1 point  101. One file, 53 lines, sorted
+  1 point  102. One file, 55 lines, unsorted
+
+               Stress
+  1 point  103. Nonexistent file (error)
+  1 point  104. Some files empty
+  1 point  105. Medium length file
+
+               -POS[,LEN]
+  1 point  106. LEN specified
+  1 point  107. LEN not specified
+
+               Stable sort? (requires [-POS[,LEN]])
+  1 point  108. POS > 0
+
+               Frees all storage?
+  1 point  109. One file, 55 lines, unsorted
+
+           Phase 2: testDeque.o + Deque.o
+
+  1 point  201. Create and destroy deque; test whether empty
+  1 point  202. Add to tail of deque; test whether empty
+  1 point  203. Push on head of deque; test whether empty
+
+           Phase 3: Qsort.o + Hwk4/Deque.o
+
+               Simple Tests from Phase 1
+  1 point  301. One file, 55 lines, unsorted (Test #102)
+  1 point  302. Some files empty (Test #104)
+  1 point  303. Medium length file (Test #105)
+
+           Phase 4: Deductions for Violating Specification
+
+               Use of arrays and global variables
+  0 point  401. Arrays?
+  0 point  402. Global variables (but not arrays)?
+
+               Efficiency
+  0 point  403. #addD()/pushD()s > 4*#cmp+n?
+  0 point  404. #addD()/pushD()s > 2*#cmp+n?
+
+               Number of stacks and queues
+  0 point  405. #stacks/queues > 2?
+  0 point  406. #stacks/queues > 3?
+
+               Other requirements
+  0 point  407. Does QsortH use Hwk4/Deque.o?
+  0 point  408. Use of malloc() outside Deque.c?
+  0 point       Local copy of Deque.h testDeque.c
+
+End of Public Script
+
+
+           Phase 1: Merge.o + Deque.o
+
+               Sorts correctly
+  1 point  110. Very short files
+sort: /tmp/Qsort.stdout.8385:7: disorder: 
+Error: STDERR should be empty
+  0 point  111. Files with 48 to 65 lines
+
+               Stress
+  1 point  112. All files or first/last file empty (= no lines)
+  1 point  113. No files
+0a1,2
+> 			   CHAPTER IV
+> 		The Rabbit Sends in a Little Bill
+41,42d42
+< 			   CHAPTER IV
+< 		The Rabbit Sends in a Little Bill
+Error: STDOUT differs from expected
+  0 point  114. 256 different 1-line files
+  1 point  115. Long file
+
+               [-POS[,LEN]]
+  1 point  116. POS <= strlen & POS+LEN > strlen; POS > strlen
+1,2c1,2
+< 0 0 0
+< 1
+---
+>  1  3 19
+> 0
+4,5c4,5
+< 0 0 0
+< 1
+---
+Error: STDOUT differs from expected
+  0 point  117. POS or LEN invalid (fail)
+  1 point  118. -POS,LEN with no files
+
+               Stable (requires [-POS[,LEN]]
+5,7d4
+< same 3 same
+< same 2 same
+< same 1 same
+8a6,8
+> same 1 same
+> same 2 same
+> same 3 same
+Error: STDOUT differs from expected
+  0 point  119. POS = 0, 0 < LEN <= strlen(line); POS > strlen(line)
+  1 point  120. LEN = 0 [POS <= strlen(line)]
+
+               Free all storage?
+  1 point  121. Medium length file
+  1 point  122. -POS[,LEN]: LEN specified
+
+           Phase 2: testDeque.o + Deque.o (4 + 6)
+  1 point  204. Add to both ends of deque; multiple deques
+  1 point  205. *S = NULL when remD()/headD() fails
+2c2
+< in use at exit: 360 bytes in 3 blocks
+---
+> in use at exit: 408 bytes in 6 blocks
+Error: STDOUT differs from expected
+  0 point  206. Destroy nonempty deque but not strings
+  1 point  207. malloc() fails
+/c/cs223/Hwk4/Tests/t208: line 15:  8846 Segmentation fault      (core dumped) XDEQUE_ANNOUNCE= ./testDeque <<END
+Ia
+Aa
+Pa
+Ra
+Ha
+Ca
+Da
+END
+
+Error: STDERR should be empty
+  0 point  208. Invalid D (= NULL) for all but createD()
+
+           Phase 3: Merge.o + Hwk4/Deque.o
+
+               Stress
+2a3,3652
+> ==8869== Invalid read of size 8
+> ==8869==    at 0x401DA9: useAsStack (Deque.c:197)
+> ==8869==    by 0x4022B2: pushD (Deque.c:347)
+> ==8869==    by 0x40166F: quicksort (Qsort.c:165)
+> ==8869==    by 0x401658: quicksort (Qsort.c:163)
+> ==8869==    by 0x401658: quicksort (Qsort.c:163)
+> ==8869==    by 0x401658: quicksort (Qsort.c:163)
+> ==8869==    by 0x401658: quicksort (Qsort.c:163)
+> ==8869==    by 0x401658: quicksort (Qsort.c:163)
+Error: STDOUT differs from expected
+  0 point  304. 1 file, 55 lines, unsorted (Test #301 with moving deques)
+2a3,3522
+> ==8892== Invalid read of size 8
+> ==8892==    at 0x4021DB: remD (Deque.c:323)
+> ==8892==    by 0x4016AF: quicksort (Qsort.c:173)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+> ==8892==    by 0x401658: quicksort (Qsort.c:163)
+Error: STDOUT differs from expected
+  0 point  305. Some files empty (Test #302 with moving deques)
+2a3,3221
+> ==8914== Invalid read of size 8
+> ==8914==    at 0x401DA9: useAsStack (Deque.c:197)
+> ==8914==    by 0x4022B2: pushD (Deque.c:347)
+> ==8914==    by 0x40166F: quicksort (Qsort.c:165)
+> ==8914==    by 0x401658: quicksort (Qsort.c:163)
+> ==8914==    by 0x401696: quicksort (Qsort.c:168)
+> ==8914==    by 0x401658: quicksort (Qsort.c:163)
+> ==8914==    by 0x401658: quicksort (Qsort.c:163)
+> ==8914==    by 0x401658: quicksort (Qsort.c:163)
+Error: STDOUT differs from expected
+  0 point  306. Medium length file (Test #303 with moving deques)
+  1 point  307. Robustness when createD() beque fails unexpectedly
+/c/cs223/Hwk4/Tests/t308: line 20:  8958 Segmentation fault      (core dumped) XDEQUE_N_ADDD=80 XDEQUE_N_PUSHD=80 ./QsortH $FILE 2> $STDERR
+/c/cs223/Hwk4/Tests/t308: line 24:  8965 Segmentation fault      (core dumped) XDEQUE_N_ADDD=120 XDEQUE_N_PUSHD=120 ./QsortH $FILE 2> $STDERR
+/c/cs223/Hwk4/Tests/t308: line 28:  8975 Segmentation fault      (core dumped) XDEQUE_N_ADDD=160 XDEQUE_N_PUSHD=160 ./QsortH $FILE 2> $STDERR
+/c/cs223/Hwk4/Tests/t308: line 32:  8985 Segmentation fault      (core dumped) XDEQUE_N_ADDD=200 XDEQUE_N_PUSHD=200 ./QsortH $FILE 2> $STDERR
+/c/cs223/Hwk4/Tests/t308: line 36:  8996 Segmentation fault      (core dumped) XDEQUE_N_ADDD=240 XDEQUE_N_PUSHD=240 ./QsortH $FILE 2> $STDERR
+2,6c2,6
+< 1
+< 1
+< 1
+< 1
+Error: STDERR should be empty
+  0 point  308. Robustness when addD() / pushdD() fails unexpectedly
+/c/cs223/Hwk4/Tests/t309: line 16:  9025 Segmentation fault      (core dumped) XDEQUE_N_REMD=40 /usr/bin/valgrind -q ./QsortH $FILE 2> $STDERR
+Killed
+Killed
+Killed
+/c/cs223/Hwk4/Tests/t309: line 32:  9041 Segmentation fault      (core dumped) XDEQUE_N_REMD=200 ./QsortH $FILE 2> $STDERR
+/c/cs223/Hwk4/Tests/t309: line 36:  9046 Segmentation fault      (core dumped) XDEQUE_N_REMD=240 ./QsortH $FILE 2> $STDERR
+1,6c1,6
+< 1
+< 1
+< 1
+Error: STDERR should be empty
+  0 point  309. Robustness when remD() fails unexpectedly
+1,2c1,2
+< 1
+< 1
+---
+> 0
+> 0
+Error: STDOUT differs from expected
+  0 point  310. Robustness when destroyD() fails unexpectedly
+
+ 28 points Total for Qsort
+
+               Additional Diagnostic Tests (1 => Pass, 0 => Deduction TBD)
+  1 point  403n. #addD()/pushD()s > 4*#cmp+n?
+  1 point  404n. #addD()/pushD()s > 2*#cmp+n?
+  1 point  409. quickSort?
+  1 point  410. addD() and pushD() run in O(1)?
+
+           Possible Deductions (assessed later as appropriate)
+                -5 Does not make
+                -1 Makefile missing
+                -1 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+                -1 Compilation errors using -Wall -std=c99 -pedantic
+                -2 Local copies of Deque.h, testDeque.*
+
+Applying 6 late days to reduce #days late from 6 to 0
+
+***** Checking makefile *****
+
+***** Checking RCS files *****
+Working file: Deque.c
+revision 1.16	date: 2020-04-06 18:33:25-04;  lines: 201 (+25 -0)
+revision 1.6	date: 2020-03-31 05:01:02-04;  lines: 174 (+13 -14)
+revision 1.5	date: 2020-03-30 23:21:25-04;  lines: 175 (+32 -9)
+revision 1.4	date: 2020-03-29 22:18:25-04;  lines: 152 (+34 -4)
+revision 1.3	date: 2020-03-29 20:43:20-04;  lines: 122 (+24 -15)
+revision 1.2	date: 2020-03-29 00:55:19-04;  lines: 113 (+38 -23)
+revision 1.1	date: 2020-03-28 21:11:17-04;  lines: 83
+Working file: LATENESS
+revision 1.1	date: 2020-04-08 19:22:42-04;  lines: 1
+Working file: Qsort.c
+revision 1.22	date: 2020-04-08 19:22:42-04;  lines: 208 (+37 -30)
+revision 1.19	date: 2020-04-08 00:29:38-04;  lines: 185 (+15 -24)
+revision 1.18	date: 2020-04-07 20:14:15-04;  lines: 194 (+23 -22)
+revision 1.17	date: 2020-04-07 12:14:10-04;  lines: 193 (+57 -129)
+revision 1.16	date: 2020-04-06 18:33:26-04;  lines: 265 (+87 -112)
+revision 1.15	date: 2020-04-06 14:31:05-04;  lines: 290 (+76 -42)
+revision 1.14	date: 2020-04-06 00:12:29-04;  lines: 256 (+69 -48)
+revision 1.13	date: 2020-04-05 01:09:48-04;  lines: 235 (+114 -67)
+revision 1.12	date: 2020-04-03 17:23:18-04;  lines: 188 (+44 -31)
+revision 1.11	date: 2020-04-02 22:16:45-04;  lines: 175 (+69 -16)
+revision 1.10	date: 2020-04-01 20:14:32-04;  lines: 122 (+27 -10)
+revision 1.9	date: 2020-04-01 18:56:14-04;  lines: 105 (+45 -17)
+revision 1.8	date: 2020-03-31 21:05:29-04;  lines: 77 (+69 -15)
+revision 1.7	date: 2020-03-31 17:54:23-04;  lines: 23 (+18 -1)
+revision 1.3	date: 2020-03-29 20:43:20-04;  lines: 6 (+5 -1)
+revision 1.1	date: 2020-03-28 21:11:17-04;  lines: 2
+
+***** Checking log file *****
+Estimate: 07:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+Total: 26:00  TOTAL time spent
+
+==> time.log <==
+Log Files
+~~~~~~~~~
+Name: Kaleb Gezahegn
+netID: kzg2
+        07:00  ESTIMATE time reading/ thinking about the qsort stacks algorithm
+          Time     Time
+    Date  Started  Spent Work completed
+    ----  -------  ----  --------------
+    03/28  08:02pm  1:00  I had a hard time trying to figure out the syntax for creating the deque struct and where i needed to intiialize the
+                            fields for the struct.(I am especially having a hard time understanding the mention of a variable after the defnition of a struct
+    03/28  12:45pm  1:00  I figured out that most of my comfusion stemmed from me interpretting the reading as telling me that the variables defined after the
+                            defintion of a struct as syntax for automatically mallocing space for the given struct given those varaibles which didn't make sense.
+                            I realized that this confusion was because the walkthrough used different versions of using typedef and so i didn't know that those variables
+                            after the defintion of a struct were simply for renaming the datatype. I was able to write the functions up to headD() after that
+    03/29  07:35pm  1:00  I finished my deque implementation and figured out how to test my implementation but i realized that I was having memeory problems and when diagnosing
+                            that i realized that i implemented my remD without copying the tail stack onto the head if the stack is empty which made me realize that I implemted
+                            my stacks wrong because the pointers in the deque struct point to the end of the stack(top) which isn't right beacuse I can't go backwards when copying
+    03/29  07:35pm  1:00  I realized that my stack implementation isn't wrong and after implenting remD, I have been messign around with testDeque to see if my deque works and making lottle
+                            changes to my other functions.
+    03/30  10:02pm  1:00  My deque.c implementation seg faults whenever trying to print from the tail stack for some reason so i've just been trying to debug that
+    03/31  02:32pm  0:30  I was able to fix the seg fault and the double freeing error that i was running into but i am still not 100% sure my Deque implementation works because I was getting random
+                            errors but then i remade example and everything started giving me the same output as Correct so who knows
+    03/31  04:51pm  1:00  I did as much testing as I could with deque including the begining 200 tests on the public tests and i didn't come up with any errors so I am pretty confident in their functionality
+                            I then started working on qsort and was able to figure out flag parsing.
+    03/31  07:31pm  1:00  I went to office hours and got help figuring out how to test my deque implementation and figured out how to properly test my Qsort and Deque. I also create the base code for reading Files
+                            for Qsort and i am in a position to start sketching out my insertion sort implementation for Qsort. I still need to tests my file input and dealing system.
+    03/31  07:31pm  1:00  I've been trying to understand quicksort and tried to approach it by programming the base recursive function but realized that i hav no understanding as to how the logic works so i've been
+                            drawing out the theory with deques. I also messed around with edge casing for the flags a bit but isdigit acts weird with longs for some reason.
+    04/01  07:31pm  1:00  Implemented error free file reading system and drew out the algorithm for quicksort with 2 stacks and a queue
+    04/02  07:31pm  1:00  I started writting out the structure for the recursive function and as I was setting up the orientation of the the deques before first being inputted into the recursive function, i realised that
+                            my algorithm doesn't really work because storing the pivot doesn't reallly work so i am just dealing with the pre quicksort Deques and going to redo the theory
+    04/03  04:15pm  1:00  I kept on having problems with saving my pivots and so I took a long time going over my implementation of the deque before realizing that I was just setting up my inputs to remD incorrectly and I
+                            also took a long time developing sanity check procedures to check the status of my queues and problems with the files that I created like existence of new line character made me take the time to
+                            go into trying to understand the functionality of functions like printf() when i just needed to click enter once on my inputted file
+    04/03  04:15pm  1:00  I spent some time tracing  the algorithm and was going back and forth trying to copy the logic into code and realizeing kinks/edge cases i need to deal with. I think my implementation is wrong though
+                            because it doesn't use the tip from note 5
+    04/04  12:02pm  1:00  I realized that there was no reason for trying to implement this program just using stacks and I realized that using 1 stack and 1 queue to sort/partition and 1 stack for storing the sorted array,
+                            my algorithm would work so i have just been trying to reformat it for that and trying to get rid of the irrelevant code that i wrote to try make partitioning with 2 stacks work.
+    04/05  11:02pm  1:00  Reformating the previous code into the new algorithm was a bad idea and I can't use the head function to check the status of the deques so I have been making small changes constantly and it's hard to debug
+                            so one thing is messing up another thing and i've just been stuck in a sad loop. I've got a variable in the recursive fn that will print the status of the deques(only once though) so debugging has become a little
+                            easier but it's still difficult. I was thinking about implementing a headD like f(n) that wouldn't flip the outputs for stacks but i don't know if that would work/if it would be worth it because i have to change the makefile
+                            devlop the function and then change it all back at the end
+    04/06  11:02am  1:00  Finally figured out how to use the VS code debugger which has made debugging so much faster because i just have to click one button to see the status of the variables inside the deques throughout the different calls to quicksort
+    04/06  01:58pm  0:30  I am trying to reformat my algorithm to work with the example from the walkthrough now
+    04/06  03:28pm  1:00  I got the example from the walkthrough to work but i realized that the implementation was very case specific so i have to fix it
+    04/06  05:28pm  1:00  I am not sure what the base case is supposed to be because i have too many if statements which are messing up with each new input
+    04/07  12:10pm  1:00  I realized that I was going about the partitioning system wrong as i was trying to sort both stacks withing one call of the recursive function but now i have restarted and am tyring to sort one stack and then passing the
+                            two different stacks to it one after the other and then pushing the pivot in between those two
+    04/07  01:20pm  1:00  I have a partially working quick sort function but I'm having a difficult time integrating the sorting of the items right of the pivot
+    04/07  06:20pm  1:00  I am close but I am missing an important part of the process on how the differnt recursive calls are integrated
+    04/07  08:12pm  1:00  Went to office hours and removed my base case for the second stack and it made it easier to think about the recursive nature of this function and I started reformat it
+    04/07  10:02pm  1:00  I started passing 2 tests from test.Qsort after implementing the integration of the second stack properly(Having it ordered in descending order)
+    04/08  12:12pm  1:00  The qsort function is working for the most time. I was mostly just debugging valgrind errors for when using strlen()
+    04/08  03:32pm  1:00  I haven't made much progress. My qsort function messes up for really large values for some reason(lost nodes and wrong order) and i've been truing to debug it.
+    04/08  03:32pm  1:00  I realized i was apssing in the wrong parameter for the number of items in numres when sorting the right stack and everything works
+    ----
+                    26:00  TOTAL time spent
+
+    I discussed my solution with:
+
+    Difficulties:
+  The memeory allocation systems of structs doesn't really seem very intuitive. I was especially confused by
+how a variable after the defintion of a struct functions and what it's purpose was.
+This is probably one of the hardest things that i have to work on because I am really bad at thinking about recursion.
+I approached it with a top down version and spent 2 days doing useless working trying to implement a recursive function
+that had for loops and attempted to sort one level of the quicksort call for both stacks and I not sure right now exactly what I
+was trying to do but it wasn't effective. This was also a wake up call for my trash notation and diagraming skills because I would
+regularly get confused when trying to test inputs by hand. I threw myself into the code before understanding what its supposed to do
+and i paid the price. :(
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+# INITIAL = GOAL with two blank squares (error)
+
+STDOUT=/tmp/Nine20.stdout.$$
+STDERR=/tmp/Nine20.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 10 123-5-789 123-5-789
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Repeat last puzzle from Test #04
+valgrind -q  ./Nine20 7 412-53786 12345678-

@@ -1,0 +1,19 @@
+#!/bin/bash
+# 1 x 12 board
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 1 12 minicomputer
+tete
+mimi
+min
+mini
+minicomputer
+minim
+miniscule
+coco
+compute
+computing
+tutu
+END

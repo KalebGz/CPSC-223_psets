@@ -1,0 +1,41 @@
+#!/bin/bash
+# Use of long arrays on stack (e.g., to compare keys)?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+MAXSTACK=65536
+
+FILE=/tmp/Qsort.file.$$
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $FILE $STDOUT $STDERR" 0 1 2 3 9 15
+
+########################
+# Automatic?
+#   Does Qsort use a stack with more than MAXSTACK bytes?  (Also tests
+#   using recursion to simulate an array.)
+
+# Create file with VERY LONG lines
+perl -e 'print "b" x '$MAXSTACK' . "\n" . "a" x '$MAXSTACK' . "\n";' > $FILE
+
+# Verify that Qsort can sort file
+/usr/bin/valgrind -q \
+ ./Qsort $FILE | sort -c
+
+# Measure amount of stack usage
+$TESTS/maxStack \
+ ./Qsort $FILE                  2>$STDERR  >$STDOUT
+
+# If maxStack faulted, try again
+ERROR=`grep maxStack $STDERR | wc -c`
+if (test $ERROR -ne 0) then
+  $TESTS/maxStack \
+   ./Qsort $FILE                2>$STDERR  >$STDOUT
+fi
+
+# Verify that limit on stack size is met
+USED=`cat $STDERR`
+if (test $USED -gt $MAXSTACK -o -v DEBUG_SCRIPT) then
+  echo "Qsort uses stack segment with more than $MAXSTACK bytes."
+  echo ----- ; cat $STDERR ; echo -----
+fi

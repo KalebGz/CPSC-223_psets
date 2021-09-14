@@ -1,0 +1,19 @@
+#!/bin/bash
+# Nonalphabetic characters in board (fail)
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  <<END \
+  ./Boggle 3 3 bull-dogs |& /usr/bin/wc -l
+peeper
+pepper
+proust
+repertoire
+superior
+END
+
+echo -----
+
+# Repeat Test #01
+valgrind -q  <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

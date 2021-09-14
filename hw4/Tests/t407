@@ -1,0 +1,18 @@
+#!/bin/bash
+# Does QsortH use Hwk4/Deque.o?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+PREREQ=/c/cs223/Hwk4/Deque.o
+$TESTS/xHybrid.pl QsortH $PREREQ 2>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "QsortH does not include $PREREQ."
+  echo ----- ; cat $STDERR ; echo -----
+fi

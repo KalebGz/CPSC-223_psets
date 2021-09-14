@@ -1,0 +1,26 @@
+#!/bin/bash
+# Extreme #flags
+
+P0="-ff"
+P1="$P0 $P0 $P0 $P0 $P0 $P0 $P0 $P0 $P0 $P0"
+P2="$P1 $P1 $P1 $P1 $P1 $P1 $P1 $P1 $P1 $P1"
+P3="$P2 $P2 $P2 $P2 $P2 $P2 $P2 $P2 $P2 $P2"
+
+# No flags
+./Binpack 13 9 2 2 5 5 3
+echo ---
+
+# One flag
+./Binpack 13 9 2 2 5 5 3  $P0
+echo ---
+
+# 10 flags
+./Binpack 13 9 2 2 5 5 3  $P1
+echo ---
+
+# 100 flags
+./Binpack 13 9 2 2 5 5 3  $P2
+echo ---
+
+# 1000 flags
+./Binpack 13 9 2 2 5 5 3  $P3

@@ -1,0 +1,7 @@
+# Convert delimited unary to binary
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Sq  .xe ..E  .x ..  x.. xx  S.. sx  .E e1  E e0   \
+		 sx S.  S.e 1  Se ""  <<END
+SE S.E S..E S...E S....E S.....E S......E S.......E
+END

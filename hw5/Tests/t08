@@ -1,0 +1,8 @@
+# 2x2 problem with no solution
+
+valgrind -q  ./Nine20 2 2 10 ABC- BAC-
+
+echo =====
+
+# Repeat last puzzle from Test #04
+valgrind -q  ./Nine20 7 412-53786 12345678-

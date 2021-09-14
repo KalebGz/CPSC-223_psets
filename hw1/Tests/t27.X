@@ -1,0 +1,17 @@
+char:1
+hdr:1
+char:2
+aardvark:2
+barnacle:2
+char:3
+cardinal:3
+devilray:3
+char:4
+elephant:4
+flamingo:4
+char:5
+grosbeak:5
+hedgehog:5
+char:6
+ironwood:6
+junipers:6

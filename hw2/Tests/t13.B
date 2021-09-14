@@ -1,0 +1,10 @@
+-ff  0
+-ffd 0
+-bf  1
+-bfd 1
+-ff  10
+-ffd 10
+-bf  100
+-bfd 100
+-ff  1000
+-ffd 1000

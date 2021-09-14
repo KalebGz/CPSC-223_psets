@@ -1,0 +1,11 @@
+#!/bin/bash
+# Must use Heuristic D & E
+# Heuristics C, D, & E necessary and sufficient (lower < opt < heuristic)
+
+./Binpack 64 33 33 33 33 18 18 18 18 18 18 18 18 18 18 18 18 17 17 17 17 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 -opt
+
+# Requires CDE
+# Fail: -optC -optD -optE
+# backtracks(-opt) = 103687
+# backtracks(-optAB) = 103697
+# -ff = -ffd = -bf = -bfd = 12 > 10 = -opt > lower

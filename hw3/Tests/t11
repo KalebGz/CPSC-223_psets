@@ -1,0 +1,16 @@
+# - fence and /- nonfence
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -n  a- b  <<END
+baba
+abab
+END
+
+echo -----
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -n  /- '(minus)'  <<END
+-abab-
+/-abab/-
+//-abab//-
+END

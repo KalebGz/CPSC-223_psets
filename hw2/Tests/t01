@@ -1,0 +1,22 @@
+#!/bin/bash
+# -ff
+
+echo 'ffd best/worst'
+echo '2 = opt = ffd < ff = bf = bfd = 3'
+./Binpack 24 9 4 4 3 3 16 9 -ff
+echo '2 = opt = ff = bf = bfd < ffd = 3'
+./Binpack 13 9 2 2 5 5 3 -ff
+echo
+
+echo 'bfd best/worst'
+echo '2 = opt = bfd < ff = ffd = bf = 3'
+./Binpack 13 9 3 5 5 2 2 -ff
+echo '2 = opt = ff = ffd = bf < bfd = 3'
+./Binpack 24 16 4 4 3 3 9 9 -ff
+echo
+
+echo 'ff/ffd better/worse than bf/bfd'
+echo '2 = opt = bf = bfd < ff = ffd = 3'
+./Binpack 13 9 5 5 3 2 2 -ff
+echo '2 = opt = ff = ffd < bf = bfd = 3'
+./Binpack 26 18 10 10 5 4 3 2 -ff

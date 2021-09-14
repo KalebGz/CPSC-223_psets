@@ -1,0 +1,10 @@
+char:1
+hdr:1
+char:3
+aardvark:3
+barnacle:3
+char:5
+cardinal:5
+devilray:6
+char:8
+elephant:8

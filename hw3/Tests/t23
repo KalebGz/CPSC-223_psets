@@ -1,0 +1,23 @@
+# Replace empty string or replacement is empty
+
+# Replace empty string
+timeout -k 1 2 valgrind -q \
+  ./strwrs -q  "" ">"  <<END
+Nathan's First Law: Software is a gas; it expands to fill it's container.
+END
+
+echo -----
+
+# Replacement string is empty
+timeout -k 1 2 valgrind -q \
+  ./strwrs -n  e ""  <<END
+There is nothing so powerful as an idea whose time has come.
+END
+
+echo -----
+
+# Replace "" by "a" in empty line
+timeout -k 1 2 valgrind -q \
+  ./strwrs -q  "" a  <<END
+
+END

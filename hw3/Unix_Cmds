@@ -1,0 +1,46 @@
+Useful Commands:
+
+
+
+ echo "aaaabbb" | ./strwrs -sss - v ab bca
+
+
+Submit
+    /c/cs223/bin/submit 3 Makefile strwrs.c time.log
+    /c/cs223/bin/check  3
+
+    
+Valgrind
+  echo "aabbab"  | valgrind --leak-check=full ./strwrs -q  ab bca
+
+
+Simple Test
+
+timeout -k 1 2 valgrind --leak-check=full \
+  ./strwrs -n  /+ '(plus)'  <<END
++abab+
+/+abab/+
+//+abab//+
+END
+
+echo "aaabbb" | \
+  timeout -k 1 2 valgrind -q \
+    ./strwrs -Qn  aa a  abb aab
+
+
+  
+  
+
+Test   
+   /c/cs223/Hwk3/test.strwrs
+    
+
+Test Staff Input
+    echo "aaaabbb" | /c/cs223/Hwk3/strwrs -Qn aa a abb aab
+
+Home Directory
+    /home/accts/kzg2/cs223/hw3
+    ~/hw3/
+
+Staff Directory
+    /c/cs223/Hwk3

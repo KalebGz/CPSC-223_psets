@@ -1,0 +1,9 @@
+#!/bin/bash
+# One file, 55 lines, unsorted
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f055

@@ -1,0 +1,16 @@
+char:1
+hdr:1
+int:3
+aardvark:3
+char:6
+barnacle:6
+char:9
+cardinal:9
+int:12
+devilray:12
+int:15
+antidisestablishmentarianism:15
+char:18
+elephant:18
+char:20
+flatworm:20

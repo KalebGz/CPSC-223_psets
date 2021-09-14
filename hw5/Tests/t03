@@ -1,0 +1,10 @@
+# Single moves to corner
+
+valgrind -q  ./Nine20 10 -12345678 1-2345678 ; /bin/echo
+valgrind -q  ./Nine20 10 -12345678 312-45678 ; /bin/echo
+valgrind -q  ./Nine20 10 12-345678 1-2345678 ; /bin/echo
+valgrind -q  ./Nine20 10 12-345678 12534-678 ; /bin/echo
+	     ./Nine20 10 123456-78 123-56478 ; /bin/echo
+	     ./Nine20 10 123456-78 1234567-8 ; /bin/echo
+	     ./Nine20 10 12345678- 12345-786 ; /bin/echo
+	     ./Nine20 10 12345678- 1234567-8

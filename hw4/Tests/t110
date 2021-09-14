@@ -1,0 +1,57 @@
+#!/bin/bash
+# Very short files
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+
+# 1-line file
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f001
+
+echo =====
+
+# 2-line files (sorted & unsorted)
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f002ab
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f002ba
+
+echo =====
+
+# Files with 3 to 9 lines
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f003
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f004
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f005
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f006
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f007
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f008
+
+echo -----
+
+/usr/bin/valgrind -q \
+  ./Qsort $TESTS/f009

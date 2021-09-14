@@ -1,0 +1,13 @@
+# + and -
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs + '>>>'  <<END
+A wealth of information creates a poverty of attention.
+END
+
+echo -----
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -q - '<<<'  <<END
+A wealth of information creates a poverty of attention.
+END

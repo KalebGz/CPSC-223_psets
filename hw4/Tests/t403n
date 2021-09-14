@@ -1,0 +1,45 @@
+#!/bin/bash
+# More than 4*#compares + #lines addD()/pushD()s (= remD()s)
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+FILE=$TESTS/f8192
+NLIN=`wc -l < $FILE`
+
+STDOUT=/tmp/Qsort.stdout.$$
+STDERR=/tmp/Qsort.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+
+########################
+# Verify that QsortH can sort quickly and correctly
+./QsortH $FILE                  2>$STDERR  >$STDOUT
+
+sort -c $STDOUT                 2>>$STDERR
+sort $FILE | diff -q - $STDOUT  2>>$STDERR >&2
+
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "WARNING: QsortH failed to sort $FILE.  Thus it will fail"
+  echo "this test even if it does not violate the conditions tested."
+  echo ----- ; cat $STDERR ; echo -----
+fi
+
+########################
+# Count #compares required
+LD_PRELOAD=$TESTS/libxCompare.so \
+ ./QsortH $FILE                 2>$STDERR  >$STDOUT
+NCMP=`cat $STDERR`
+
+########################
+# Sort unsorted file
+LIMIT=$((4 * ($NCMP + $NLIN)))
+
+XDEQUE_N_REMD=$LIMIT             \
+XDEQUE_DIE=                      \
+LD_PRELOAD=$TESTS/libxBarrier.so \
+ ./QsortH $FILE                 2>$STDERR  >$STDOUT
+				  
+if (test -s $STDERR -o -v DEBUG_SCRIPT) then
+  echo "QsortH requires more than $LIMIT = 4*($NCMP+$NLIN) remD()s to sort $FILE."
+  echo ----- ; cat $STDERR ; echo -----
+fi

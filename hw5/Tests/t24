@@ -1,0 +1,21 @@
+# 2x5 and 5x2 problems
+
+# Short problems (10)
+valgrind -q  ./Nine20 2 5 100 12345-9876 234561-987 | wc -l ; echo
+valgrind -q  ./Nine20 5 2 100 12-3948576 2314-59687 | wc -l
+
+echo =====
+
+# Medium problems (32)
+	     ./Nine20 2 5 100 123456789- 23456789-1 | wc -l ; echo
+	     ./Nine20 5 2 100 123456789- 23456789-1 | wc -l
+
+echo =====
+
+# Long solution
+	     ./Nine20 5 2 100 123456789- -987654321 | wc -l
+
+echo =====
+
+# No solution
+	     ./Nine20 2 5 100 123456789- 123456798- | wc -l

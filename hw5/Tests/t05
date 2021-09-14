@@ -1,0 +1,5 @@
+# Short 3x3 problems (< 16 moves)
+
+valgrind -q  ./Nine20 14 23615847- 12345678- | wc -l ; /bin/echo
+valgrind -q  ./Nine20 14 236158-47 12345678- | wc -l ; /bin/echo
+valgrind -q  ./Nine20 14 -36258147 12345678- | wc -l

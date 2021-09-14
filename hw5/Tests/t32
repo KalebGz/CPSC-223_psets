@@ -1,0 +1,58 @@
+#!/bin/bash
+# Incorrect number of arguments (error)
+
+STDOUT=/tmp/Nine20.stdout.$$
+STDERR=/tmp/Nine20.stderr.$$
+trap "/bin/rm -f $STDOUT $STDERR" 0 1 2 3 9 15
+
+# No arguments
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Missing INITIAL and GOAL
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 10
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Missing MAXSTEPS
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 12345678- 1234567-8
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Missing GOAL
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 10 12345678-
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Extra GOAL
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 10 12345678- 123456-8- 1234567-8
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Missing MAXSTEPS with H x W
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 3 3 12345678- 1234567-8
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Missing GOAL with H x W
+valgrind -q >$STDOUT 2>$STDERR \
+  ./Nine20 3 3 10 12345678-
+cat <$STDOUT ; echo ----- ; wc -l < $STDERR
+
+echo =====
+
+# Repeat last puzzle from Test #04
+valgrind -q  ./Nine20 7 412-53786 12345678-

@@ -1,0 +1,7 @@
+#!/bin/bash
+# Example from specification
+
+TESTS=/c/cs223/Hwk6/Tests
+
+valgrind -q  --leak-check=yes <$TESTS/dict01 \
+  ./Boggle 3 3 epiproust

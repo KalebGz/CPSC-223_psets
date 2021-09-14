@@ -1,0 +1,11 @@
+#!/bin/bash
+# Loop in addD() or in pushD()?
+
+TESTS=/c/cs223/Hwk4/Tests
+export LC_ALL=C
+
+# Add 100000 lines to deque
+perl -e 'print "Ca\n" . ("Aa1\n" x 100000)' | testDeque > /dev/null
+
+# Push 100000 lines on deque
+perl -e 'print "Ca\n" . ("Pa1\n" x 100000)' | testDeque > /dev/null

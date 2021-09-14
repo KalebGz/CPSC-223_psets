@@ -1,0 +1,11 @@
+# x ==> x succeeds under -Qn and -Qq if x present (NOT a loop)
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Qn  a a  b c  <<END
+ab ab
+END
+
+timeout -k 1 2 valgrind -q \
+  ./strwrs -Qq  a a  b c  <<END
+ab ab
+END
